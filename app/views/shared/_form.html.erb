@@ -1,0 +1,15 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-6">
+    <%= simple_form_for @store do |f| %>
+      <%= f.error_notification %>
+
+      <%= f.text_area :name, placeholder: 'name' %>
+
+      <%= f.text_area :presentation, placeholder: 'presentation' %>
+
+      <%= f.input :photos, as: :file, label: false %>
+
+      <%= f.button :submit, class: "btn-primary" %>
+    <% end %>
+  </div>
+</div>
