@@ -1,13 +1,17 @@
+<% if current_trader.store.nil?%>
+  <div>
+    <%= link_to "crée la boutique", new_store_path %>
+  </div>
+<% else %>
+  <div>
+    <%= link_to "mise a jours de la boutique", edit_store_path(@store) %>
+  </div>
+<% end %>
+
 <div>
-<%= link_to "crée la boutique", new_store_path %>
+  <%= link_to "crée un produit", dashboard_path %>
 </div>
 <div>
-<%= link_to "mise a jours de la boutique", dashboard_path %>
-</div>
-<div>
-<%= link_to "crée un produit", dashboard_path %>
-</div>
-<div>
-<%= link_to "mise a jours des produits", dashboard_path %>
+  <%= link_to "mise a jours des produits", dashboard_path %>
 </div>
 

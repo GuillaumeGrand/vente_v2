@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'products/index'
+  get 'products/show'
+  get 'products/edit'
+  get 'products/new'
+  get 'products/delete'
   get 'indentification/identification'
   devise_for :traders
   devise_for :users
