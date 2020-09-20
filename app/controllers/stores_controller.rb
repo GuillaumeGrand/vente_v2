@@ -1,16 +1,10 @@
 class StoresController < ApplicationController
   def index
-    @store = Store.all
+    @stores = Store.all
   end
 
   def show
-    store = Store.find(params[:id])
-
-    if current_trader.id == store.trader.id
-      @store = store
-    else
-      redirect_to stores_path(store)
-    end
+    @store = Store.find(params[:id])
   end
 
   def new

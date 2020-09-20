@@ -1,7 +1,21 @@
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('deconextion utilisateur', destroy_user_session_path, method: :delete) %>
+  </li>
+<% else %>
+  <li>
+  <%= link_to('connextion utilisateur', new_user_session_path) %>
+  </li>
+<% end %>
 
-
-<%= link_to "inscription utilisateur", new_user_session_path%>
-<%= link_to "connextion utilisateur", user_session_path%>
 <p></p>
-<%= link_to "inscription commercant", new_trader_session_path%>
-<%= link_to "connextion commercant", trader_session_path%>
+
+<% if trader_signed_in? %>
+  <li>
+  <%= link_to('deconextion commercant', destroy_trader_session_path, method: :delete) %>
+  </li>
+<% else %>
+  <li>
+  <%= link_to "connextion commercant", trader_session_path%>
+  </li>
+<% end %>

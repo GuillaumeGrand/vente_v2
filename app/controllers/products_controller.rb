@@ -3,22 +3,45 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+    @cart = Cart.new
   end
 
   def edit
+    @store = Store.find(current_trader.store.id)
+    @product = Product.find(params[:id])
   end
 
   def update
-
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to store_path(@product.store.id)
   end
 
   def new
+    @store = Store.find(current_trader.store.id)
+    @product = Product.new
   end
 
   def create
-
+    product = Product.new(product_params)
+    @store = Store.find(params[:store_id])
+    product.store = @store
+    product.save
+    redirect_to store_path(@store)
   end
 
-  def delete
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+
+    # no need for app/views/restaurants/destroy.html.erb
+    redirect_to store_path(product.store)
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :presentation, :price, :stock, photos: [])
   end
 end

@@ -1,0 +1,15 @@
+<% @store.products.each do |product| %>
+  <%= link_to controller: "products", action: "edit", id: product, store_id: @store do %>
+    <div class="card-trip">
+      <%= cl_image_tag(product.photos[0].key, :width => 250, :height => 200) if product.photos.present? %>
+      <div class="card-trip-infos">
+          <div>
+            <h2><%= product.name %></h2>
+            <p><%= product.presentation %></p>
+          </div>
+            <h2 class="card-trip-pricing"><%= product.price %></h2>
+        <%= link_to "S", product_path(product), :method => :delete,class: "btn btn-light card-trip-user avatar-bordered" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

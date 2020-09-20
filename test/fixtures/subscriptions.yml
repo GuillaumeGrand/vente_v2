@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan_id: MyString
+  user_id: 1
+  active: false
+  current_period_ends_at: 2020-09-17 14:01:11
+  stripe_id: MyString
+
+two:
+  plan_id: MyString
+  user_id: 1
+  active: false
+  current_period_ends_at: 2020-09-17 14:01:11
+  stripe_id: MyString

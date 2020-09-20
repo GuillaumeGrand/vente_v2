@@ -8,10 +8,25 @@
   </div>
 <% end %>
 
+<% if current_trader.store.nil? ==  false %>
+  <div>
+    <%= link_to "crée un produit", new_store_product_path(current_trader.store.id) %>
+  </div>
+  <div>
+    <%= link_to "mise a jours des produits", store_path(current_trader.store.id) %>
+  </div>
+<% end %>
+
 <div>
-  <%= link_to "crée un produit", dashboard_path %>
-</div>
-<div>
-  <%= link_to "mise a jours des produits", dashboard_path %>
+  <%= link_to "abonnement"%>
 </div>
 
+ <form id="signup-form">
+      <div>
+        <input id="email" type="text" placeholder="Email address" required />
+      </div>
+​
+      <button id="email-submit" type="submit">
+        <span id="button-text">Sign up</span>
+      </button>
+</form>

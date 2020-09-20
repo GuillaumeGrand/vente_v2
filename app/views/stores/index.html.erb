@@ -1,3 +1,20 @@
-<h1>Stores#index</h1>
-<p>Find me in app/views/stores/index.html.erb</p>
 
+
+<div class="cards">
+    <% if @stores.present? %>
+      <% @stores.each do |store|  %>
+        <a href = "stores/<%= store.id %>">
+          <div class="card-trip">
+            <%= cl_image_tag store.photos.key if store.photos.present? %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= store.name.html_safe %></h2>
+                <p><%= store.presentation.html_safe %></p>
+              </div>
+              <h2 class="card-trip-pricing"></h2>
+            </div>
+          </div>
+        </a>
+      <% end %>
+    <% end %>
+</div>

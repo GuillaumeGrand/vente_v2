@@ -1,0 +1,18 @@
+<h1>Carts#index</h1>
+
+<% @cart_product.each do  |store| %>
+  <% store[1].each do  |product| %>
+    <%= product.quantity %>
+    <%= product.product.name %>
+    <%= product.user.email %>
+
+      <%= simple_form_for [product] do |f| %>
+      <%= f.input :quantity, collection: 1..product.product.stock, selected: product.quantity %>
+      <% end %>
+    <%= link_to "suprimer", cart_path(product.id), :method => :delete %>
+  <% end %>
+  <%= button_to 'buy', {:controller => "checkout", :action => "create", :store_id => store[0], :user => current_user.id } , :method=>:post, remote: true %>
+
+  <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+<% end %>
+

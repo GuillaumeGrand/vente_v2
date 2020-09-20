@@ -1,2 +1,11 @@
-show.html.erb
-<%= cl_image_tag @store.photos.key, height: 300, width: 400, crop: :fill %>
+<div class="cards">
+  <div class="container">
+    <div class="row">
+      <% if current_trader == @store.trader %>
+        <%= render "shared/show_trader" %>
+      <% else %>
+        <%= render "shared/show_user" %>
+      <% end %>
+    </div>
+  </div>
+</div>

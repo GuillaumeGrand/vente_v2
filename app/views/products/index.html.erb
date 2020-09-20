@@ -1,2 +1,19 @@
 <h1>Products#index</h1>
 <p>Find me in app/views/products/index.html.erb</p>
+
+<%= simple_form_for [@store, @product] do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :name %>
+
+  <%= f.input :presentation %>
+
+  <%= f.input :stock %>
+
+  <%= f.input :price %>
+
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
+  <%= f.button :submit, class: "btn-primary" %>
+  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+<% end %>

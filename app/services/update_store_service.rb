@@ -23,11 +23,19 @@ class UpdateStoreService
     end
 
     def delete_old_photo
-      Cloudinary::Uploader.destroy(fetch_store.photos.key, options = {})
+      if @store_params["photos"].nil? == false
+        Cloudinary::Uploader.destroy(fetch_store.photos.key, options = {})
+      end
     end
 
     def update_store
       delete_old_photo
       fetch_store.update(@store_params)
+    end
+
+    private
+
+    def product_params
+      params.require(:product).permit(:presentation, :name, :photos)
     end
 end

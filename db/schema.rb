@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_073119) do
+ActiveRecord::Schema.define(version: 2020_09_19_044504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_073119) do
     t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "checkout_session_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["store_id"], name: "index_orders_on_store_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -63,10 +64,11 @@ ActiveRecord::Schema.define(version: 2020_09_09_073119) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "presentation"
-    t.integer "price"
+    t.integer "price_cents", default: 0, null: false
     t.bigint "store_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "stock"
     t.index ["store_id"], name: "index_products_on_store_id"
   end
 
@@ -77,6 +79,16 @@ ActiveRecord::Schema.define(version: 2020_09_09_073119) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "trader_id"
     t.index ["trader_id"], name: "index_stores_on_trader_id", unique: true
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "plan_id"
+    t.integer "user_id"
+    t.boolean "active", default: true
+    t.datetime "current_period_ends_at"
+    t.string "stripe_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "traders", force: :cascade do |t|
