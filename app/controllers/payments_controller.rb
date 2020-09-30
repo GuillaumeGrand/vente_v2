@@ -1,5 +1,5 @@
 class PaymentsController
-  def new
+  def create_acount
 
   end
 end

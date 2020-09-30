@@ -22,4 +22,11 @@ Rails.application.routes.draw do
     get 'success', to: 'checkout#success', as: 'checkout_success'
   end
 
+  get '/card/index' => 'billings#index', as: :billing
+  get '/card/new' => 'billings#new_card', as: :add_payment_method
+  post "/card" => "billings#create_card", as: :create_payment_method
+  get '/success' => 'billings#success', as: :success
+  get '/delete_sub' => 'billings#delete_sub', as: :delete_sub
+  post '/subscription' => 'billings#subscribe', as: :subscribe
+
 end

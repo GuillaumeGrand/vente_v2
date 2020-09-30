@@ -11,7 +11,10 @@
       <% end %>
     <%= link_to "suprimer", cart_path(product.id), :method => :delete %>
   <% end %>
-  <%= button_to 'buy', {:controller => "checkout", :action => "create", :store_id => store[0], :user => current_user.id } , :method=>:post, remote: true %>
+  <%= button_to 'buy', {:controller => "checkout", :action => "create", :store_id => store[0], :user => current_user.id },
+                        id: 'checkout-button',
+                        :method=>:post,
+                        remote: true %>
 
   <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
 <% end %>
