@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function() {
   // Assumes you've already included Stripe.js!
-const stripe = Stripe('pk_test_51GyG8KCV96yeUuNKdPMaM13rDcWlkY8VbM0xiLjxWLur2wn3BNOhWelKknrKQU1I9SQBj52UzvyfZhnh9kYink2O00mBAoCPlS');
+const stripe = Stripe(gon.stripe_publishable_key);
 
 const myForm = document.querySelector('.my-form');
 

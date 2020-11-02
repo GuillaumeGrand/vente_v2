@@ -1,5 +1,5 @@
 document.addEventListener("turbolinks:load", function() {
-const stripe = Stripe('pk_test_51GyG8KCV96yeUuNKdPMaM13rDcWlkY8VbM0xiLjxWLur2wn3BNOhWelKknrKQU1I9SQBj52UzvyfZhnh9kYink2O00mBAoCPlS');
+const stripe = Stripe(gon.stripe_publishable_key);
 console.log(1);
   checkoutButton = document.getElementById("checkout-buy");
 console.log(2);

@@ -7,6 +7,7 @@
     <title>VenteV2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= include_gon(:init => true) %>
 
     <script src="https://use.fontawesome.com/eb08432f74.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
