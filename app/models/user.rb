@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :orders
-  after_create :stripe_acount
+  # after_create :stripe_acount
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

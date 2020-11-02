@@ -15,7 +15,7 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-require("packs/cart")
-require("packs/stripe")
+require("packs/create_checkout")
+require("packs/stripe_sub")
+require("packs/trader_token")
 

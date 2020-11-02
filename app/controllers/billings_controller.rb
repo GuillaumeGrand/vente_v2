@@ -57,7 +57,7 @@ class BillingsController < ApplicationController
       #we delete all subscription that the customer has. We do this because we don't want that our customer to have multiple subscriptions
 
       plan_id = params[:plan_id]
-      p "1" * 150
+
       subscription = Stripe::Subscription.create({
                                                      customer: customer,
                                                      items: [{plan: plan_id}], })

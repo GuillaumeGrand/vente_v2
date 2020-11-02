@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # post 'create_cart', to: 'carts#create', as: "create_cart"
   # get 'show/cart', to: 'carts#show', as: "show"
   get 'indentification/identification'
-  devise_for :traders
-  devise_for :users
+  devise_for :traders, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
   root to: "stores#index"
   get '/identification', to: 'identifications#identification', as: "identification"
@@ -16,11 +16,23 @@ Rails.application.routes.draw do
   resources :products, only: [ :show, :edit, :update, :destroy]
   resources :carts, only: [:index, :create, :update, :destroy]
 
-  scope '/checkout' do
-    post 'create', to: 'checkout#create', as: 'checkout_create'
-    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
-    get 'success', to: 'checkout#success', as: 'checkout_success'
+  scope '/checkouts' do
+    get 'create/:store_id', to: 'checkouts#create_checkout'
+    get 'cancel', to: 'checkouts#cancel', as: 'checkout_cancel'
+    get 'success', to: 'checkouts#success', as: 'checkout_success'
+    get 'checkout', to: 'checkouts#checkout', as: 'checkout'
   end
+
+  get '/trader_person' => 'identifications#trader_person', as: :trader_person
+
+  get '/trader_edit' => 'identifications#trader_edit', as: :trader_edit
+  post '/trader_update' => 'identifications#trader_update', as: :trader_update
+
+  get '/info' => 'identifications#info_stripe', as: :info
+  post '/user_info' => 'identifications#user_info', as: :user_info
+
+  get '/trader_info' => 'identifications#trader_info', as: :trader_info
+  post '/trader_info_create' => 'identifications#trader_info_create', as: :trader_info_create
 
   get '/card/index' => 'billings#index', as: :billing
   get '/card/new' => 'billings#new_card', as: :add_payment_method

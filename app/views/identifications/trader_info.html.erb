@@ -1,0 +1,117 @@
+<form class="my-form" action="/trader_info_create" method="post">
+  <input type="hidden" name="token-account" id="token-account">
+  <input type="hidden" name="token-person" id="token-person">
+  <input type="hidden" value="<%= form_authenticity_token() %>"name="authenticity_token"/>
+
+  <label>
+    <span>Business Name</span>
+    <input class="inp-company-name">
+  </label>
+  <label>
+    <span>External account</span>
+    <input class="inp-company-account">
+  </label>
+
+  <fieldset>
+    <legend>Business info</legend>
+    <label>
+      <span>Street Address Line 1</span>
+      <input class="inp-company-street-address1">
+    </label>
+    <label>
+      <span>City</span>
+      <input class="inp-company-city">
+    </label>
+    <label>
+      <span>State</span>
+      <input class="inp-company-state">
+    </label>
+    <label>
+      <span>Postal Code</span>
+      <input class="inp-company-zip">
+    </label>
+    <label>
+      <span>SIREN number</span>
+      <input class="inp-company-siren">
+    </label>
+    <label>
+      <span>Business description</span>
+      <input class="inp-company-website">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Owners</legend>
+    <label>
+      <span>first name</span>
+      <input class="inp-owners-first_name">
+    </label>
+    <label>
+      <span>last name</span>
+      <input class="inp-owners-last_name">
+    </label>
+    <label>
+      <span>day</span>
+      <input class="inp-owners-day">
+    </label>
+    <label>
+      <span>month</span>
+      <input class="inp-owners-month">
+    </label>
+    <label>
+      <span>year</span>
+      <input class="inp-owners-year">
+    </label>
+
+    <legend>Owners adress</legend>
+    <label>
+      <span>Street Address Line 1</span>
+      <input class="inp-owners-street-address1">
+    </label>
+    <label>
+      <span>City</span>
+      <input class="inp-owners-city">
+    </label>
+    <label>
+      <span>State</span>
+      <input class="inp-owners-state">
+    </label>
+    <label>
+      <span>Postal Code</span>
+      <input class="inp-owners-zip">
+    </label>
+  </fieldset>
+
+  <label>
+    <span>Representative First Name</span>
+    <input class="inp-person-first-name">
+  </label>
+  <label>
+    <span>Representative Last Name</span>
+    <input class="inp-person-last-name">
+  </label>
+  <fieldset>
+    <legend>Representative Address</legend>
+    <label>
+      <span>Street Address Line 1</span>
+      <input class="inp-person-street-address1">
+    </label>
+    <label>
+      <span>City</span>
+      <input class="inp-person-city">
+    </label>
+    <label>
+      <span>State</span>
+      <input class="inp-person-state">
+    </label>
+    <label>
+      <span>Postal Code</span>
+      <input class="inp-person-zip">
+    </label>
+  </fieldset>
+<!-- <p>En cliquant sur ce bouton, vous acceptez
+  <a href="#">nos Conditions Générales d'Utilisation</a> ainsi que les
+  <a href="/connect-account/legal">Conditions d'Utilisation des Comptes Connectés Stripe</a>
+</p> -->
+  <button>Submit</button>
+</form>
