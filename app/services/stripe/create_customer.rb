@@ -1,22 +1,14 @@
 module Stripe
   class CreateCustomer
 
-    def initialize(token)
-      @token = token
+    def initialize(trader_id)
+      @trader_id = trader_id
     end
 
     def call
-       account = Stripe::Account.create({
-        country: 'FR',
-        business_profile: {
-          product_description: "product_description",
-        },
-        capabilities: {
-          transfers: {requested: true},
-        },
-        type: 'custom',
-        account_token: @token,
-      })
+       account = Stripe::Customer.create()
+       trader = Trader.find(@trader_id)
+       trader.update(person_id: account["id"])
     end
   end
 end

@@ -34,11 +34,11 @@ Rails.application.routes.draw do
   get '/trader_info' => 'identifications#trader_info', as: :trader_info
   post '/trader_info_create' => 'identifications#trader_info_create', as: :trader_info_create
 
-  get '/card/index' => 'billings#index', as: :billing
-  get '/card/new' => 'billings#new_card', as: :add_payment_method
-  post "/card" => "billings#create_card", as: :create_payment_method
-  get '/success' => 'billings#success', as: :success
-  get '/delete_sub' => 'billings#delete_sub', as: :delete_sub
-  post '/subscription' => 'billings#subscribe', as: :subscribe
+  get '/index_sub' => 'subscriptions#index', as: :index_sub
+  post '/checkout_sub' => 'subscriptions#checkout_sub', as: :checkout_sub
+  post '/webhook' => 'subscriptions#webhook', as: :webhook
+  get '/delete_sub' => 'subscriptions#delete_sub', as: :delete_sub
+  get '/success' => 'subscriptions#success', as: :success
+  get '/checkout_session' => 'subscriptions#checkout_session', as: :checkout_session
 
 end

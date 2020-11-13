@@ -23,7 +23,7 @@ class IdentificationsController < ApplicationController
   def trader_info_create
     trader = Trader.find(current_trader.id)
     account = Stripe::CreateTrader.new( params['token-account']).call
-    Stripe::AccountLinks.new(account).call
+    Stripe::AccountLinks.new(account, trader.id).call
     trader.update(stripe_account: account["id"])
     # person = Stripe::CreatePerson.new(account["id"], params['token-person']).call
     # trader.update(person_id: person["id"])
