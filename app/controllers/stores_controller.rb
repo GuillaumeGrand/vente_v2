@@ -27,7 +27,12 @@ class StoresController < ApplicationController
   end
 
   def update
+    @store = Store.find(params[:id])
     store_data = store_params
+
+    if store_params["photos"].nil? == false
+        Cloudinary::Uploader.destroy(@store.photos.key)
+    end
     UpdateStoreService.new(params[:id], store_data).call
     redirect_to store_path(params[:id])
   end
