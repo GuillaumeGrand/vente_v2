@@ -1,4 +1,11 @@
 <h1>Products#edit</h1>
+
+<div class = "photos">
+   <% @product.photos.each do |photo| %>
+          <%= cl_image_tag(photo.key, :width => 250, :height => 200, :class => "photo_product", :id => photo.id) %>
+  <% end %>
+</div>
+
 <%= simple_form_for [@store, @product], :url => product_path, method: :patch do |f| %>
   <%= f.error_notification %>
 
@@ -9,6 +16,8 @@
   <%= f.input :stock %>
 
   <%= f.input :price %>
+
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
   <%= f.button :submit, class: "btn-primary" %>
   <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>

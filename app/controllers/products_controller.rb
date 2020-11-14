@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    if product_params["photos"].nil? == false
+      @product.photos.each do |photo|
+        Cloudinary::Uploader.destroy(photo.key)
+      end
+    end
     @product.update(product_params)
     redirect_to store_path(@product.store.id)
   end
