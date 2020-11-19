@@ -11,7 +11,7 @@ class SubscribeTrader
       end
       #if there is no card
 
-      customer = Stripe::Customer.new @trader.stripe_id
+      customer = Stripe::Customer.new @trader.stripe_account
       #we define our customer
 
       subscriptions = Stripe::Subscription.list(customer: customer.id)

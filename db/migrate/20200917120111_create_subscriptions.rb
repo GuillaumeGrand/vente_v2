@@ -5,7 +5,7 @@ class CreateSubscriptions < ActiveRecord::Migration[6.0]
       t.integer :user_id
       t.boolean :active, default: true
       t.datetime :current_period_ends_at
-      t.string :stripe_id
+      t.string :stripe_account
 
       t.timestamps
     end

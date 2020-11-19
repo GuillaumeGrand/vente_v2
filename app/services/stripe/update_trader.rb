@@ -1,9 +1,10 @@
 module Stripe
   class UpdateTrader
 
-    def initialize(account_id, account_token)
+    def initialize(account_id, token)
       @account_id = account_id
-      @account_token = account_token
+      @token = token
+
     end
 
     def call
@@ -15,7 +16,14 @@ module Stripe
         capabilities: {
           transfers: {requested: true},
         },
-        account_token: @account_token,
+        # individual: {
+        #   verification: {
+        #     document: {
+        #       front: @file,
+        #     },
+        #   },
+        # },
+        account_token: @token,
       )
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_25_094816) do
+ActiveRecord::Schema.define(version: 2020_10_01_110404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,12 +50,12 @@ ActiveRecord::Schema.define(version: 2020_10_25_094816) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
+    t.string "checkout_session_id"
     t.bigint "user_id", null: false
     t.bigint "store_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "checkout_session_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["store_id"], name: "index_orders_on_store_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_10_25_094816) do
     t.integer "user_id"
     t.boolean "active", default: true
     t.datetime "current_period_ends_at"
-    t.string "stripe_id"
+    t.string "stripe_account"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -94,15 +94,13 @@ ActiveRecord::Schema.define(version: 2020_10_25_094816) do
   create_table "traders", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "stripe_account"
+    t.string "stripe_subscription_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "stripe_id"
-    t.string "stripe_subscription_id"
-    t.string "stripe_account"
-    t.string "person_id"
     t.index ["email"], name: "index_traders_on_email", unique: true
     t.index ["reset_password_token"], name: "index_traders_on_reset_password_token", unique: true
   end
@@ -110,12 +108,12 @@ ActiveRecord::Schema.define(version: 2020_10_25_094816) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "stripe_account"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "stripe_id"
     t.string "country"
     t.string "legal_name"
     t.string "adress_1"

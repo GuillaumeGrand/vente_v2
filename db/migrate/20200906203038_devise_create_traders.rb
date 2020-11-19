@@ -7,6 +7,9 @@ class DeviseCreateTraders < ActiveRecord::Migration[6.0]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
+      t.string :stripe_account
+      t.string :stripe_subscription_id
+
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

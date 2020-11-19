@@ -14,7 +14,7 @@ module Stripe
       })
 
       trader = Trader.find(@trader_id)
-      trader.update(stripe_id: @account["id"])
+      trader.update(stripe_account: @account["id"])
     end
   end
 end

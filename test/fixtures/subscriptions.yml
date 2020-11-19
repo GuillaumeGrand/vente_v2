@@ -5,11 +5,11 @@ one:
   user_id: 1
   active: false
   current_period_ends_at: 2020-09-17 14:01:11
-  stripe_id: MyString
+  stripe_account: MyString
 
 two:
   plan_id: MyString
   user_id: 1
   active: false
   current_period_ends_at: 2020-09-17 14:01:11
-  stripe_id: MyString
+  stripe_account: MyString
