@@ -1,7 +1,7 @@
 <div class="container">
   <div class = "photos">
      <% @product.photos.each do |photo| %>
-            <%= cl_image_tag(photo.key, :width => 250, :height => 200, :class => "photo_product", :id => photo.id) %>
+            <%= cl_image_tag(photo.key, :class => "photo_product", :id => photo.id) %>
     <% end %>
   </div>
 

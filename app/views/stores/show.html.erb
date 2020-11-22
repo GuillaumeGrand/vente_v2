@@ -1,21 +1,19 @@
 <div class="container">
-  <div class="cards">
-    <% @store.products.each do |product| %>
+  <% @store.products.each do |product| %>
     <%= link_to controller: "products", action: "show", id: product, store_id: @store do %>
-      <div class="card-trip">
+      <div class="card-product">
         <%= cl_image_tag(product.photos[0].key, :width => 250, :height => 200) if product.photos.present? %>
-        <div class="card-trip-infos">
-            <div>
-              <h2><%= product.name %></h2>
-              <p><%= product.presentation %></p>
-            </div>
-              <h2 class="card-trip-pricing"><%= product.price %></h2>
+          <div class="card-product-infos">
+            <h2><%= product.name %></h2>
+            <p><%= product.presentation %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= product.price %></h2>
           <% if current_trader == @store.trader %>
             <%= link_to "S", product_path(product), :method => :delete,class: "btn btn-light card-trip-user avatar-bordered" %>
           <% end %>
-        </div>
       </div>
     <% end %>
-    <% end %>
-  </div>
+  <% end %>
 </div>
+
+
