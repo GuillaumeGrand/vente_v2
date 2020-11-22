@@ -6,3 +6,26 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.container{
+  min-height: 100vh;
+}
+
+.store_index{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.left_bar{
+  display:inline-block;
+  background: #FFFFFF;
+  min-width: 200px;
+  height:100vh;
+  margin-top: 16px;
+  border-right: solid;
+  border-color: #DDDDDD;
+  border-width: 1px;
+}
+
+#cards_index{
+}

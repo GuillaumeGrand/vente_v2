@@ -1,29 +1,29 @@
-<h1>Products#show</h1>
-<div class = "photos">
-   <% @product.photos.each do |photo| %>
-          <%= cl_image_tag(photo.key, :width => 250, :height => 200, :class => "photo_product", :id => photo.id) %>
+<div class="container">
+  <div class = "photos">
+     <% @product.photos.each do |photo| %>
+            <%= cl_image_tag(photo.key, :width => 250, :height => 200, :class => "photo_product", :id => photo.id) %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= @product.name %>
+    <%= @product.presentation %>
+    <%= @product.price %>
+  </div>
+
+  <%= simple_form_for @cart do |f| %>
+        <%= f.error_notification %>
+
+        <%= f.hidden_field :product_id, value: "#{@product.id}" %>
+
+        <%= f.hidden_field :store_id, value: "#{@product.store.id}" %>
+
+        <%= f.input :quantity, collection: [1, 2, 3, 4, 5], label: "qantiter :", selected: 1 %>
+
+        <%= f.button :submit,'panier', class: "btn-primary" %>
+
+        <%= link_to 'Achat', stores_path, :class => 'button' %>
   <% end %>
+
+  <p>adresse de livraison</p>
 </div>
-
-<div>
-  <%= @product.name %>
-  <%= @product.presentation %>
-  <%= @product.price %>
-</div>
-
-<%= simple_form_for @cart do |f| %>
-      <%= f.error_notification %>
-
-      <%= f.hidden_field :product_id, value: "#{@product.id}" %>
-
-      <%= f.hidden_field :store_id, value: "#{@product.store.id}" %>
-
-      <%= f.input :quantity, collection: [1, 2, 3, 4, 5], label: "qantiter :", selected: 1 %>
-
-      <%= f.button :submit,'panier', class: "btn-primary" %>
-
-      <%= link_to 'Achat', stores_path, :class => 'button' %>
-<% end %>
-
-<p>adresse de livraison</p>
-

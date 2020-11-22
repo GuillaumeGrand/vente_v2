@@ -1,20 +1,22 @@
+<div class="store_index">
+  <div class="left_bar"><h2>foo</h2></div>
 
-
-<div class="cards">
-    <% if @stores.present? %>
-      <% @stores.each do |store|  %>
-        <a href = "stores/<%= store.id %>">
-          <div class="card-trip">
-            <%= cl_image_tag store.photos.key if store.photos.present? %>
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= store.name.html_safe %></h2>
-                <p><%= store.presentation.html_safe %></p>
+  <div class="cards" id="cards_index">
+      <% if @stores.present? %>
+        <% @stores.each do |store|  %>
+          <a href = "stores/<%= store.id %>">
+            <div class="card-trip">
+              <%= cl_image_tag store.photos.key if store.photos.present? %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= store.name.html_safe %></h2>
+                  <p><%= store.presentation.html_safe %></p>
+                </div>
+                <h2 class="card-trip-pricing"></h2>
               </div>
-              <h2 class="card-trip-pricing"></h2>
             </div>
-          </div>
-        </a>
+          </a>
+        <% end %>
       <% end %>
-    <% end %>
+  </div>
 </div>
