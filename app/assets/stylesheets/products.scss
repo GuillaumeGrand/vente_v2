@@ -1,3 +1,51 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.product_photo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.product_photo img {
+  margin-right: 8px;
+  margin-bottom: 4px;
+  border: solid 1px;
+  border-radius: 2px;
+}
+
+.product_photo img:hover {
+  border-color: #e77600;;
+  cursor: pointer;
+  border-width:2px;
+}
+
+.product_price {
+  min-width: 242px;
+  max-width: 242px;
+  height: 496.45px;
+  border: solid 1px;
+  border-color: #DDDDDD;
+  padding: 14px 18px;
+  border-radius: 4px;
+}
+
+.show{
+  min-width: 2em;
+}
+
+#show_photo {
+  display: flex;
+  flex-direction: row;
+}
+
+#show_photo img:hover {
+  cursor: pointer;
+}
+
+#show_product{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 32px;
+}

@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     resources :products, only: [ :index, :new, :create ]
   end
   resources :products, only: [ :show, :edit, :update, :destroy]
-  resources :carts, only: [:index, :create, :update, :destroy]
+
+  resources :carts, only: [:index, :create, :destroy]
+  patch '/update_cart' => 'carts#update', as: "update_cart"
 
   scope '/checkouts' do
     get 'create/:store_id', to: 'checkouts#create_checkout'

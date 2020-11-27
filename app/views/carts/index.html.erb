@@ -1,18 +1,24 @@
-<h1>Carts#index</h1>
+<div class="container">
+  <h1>Carts#index</h1>
 
-<% @cart_product.each do  |store| %>
-  <% store[1].each do  |product| %>
-    <%= product.quantity %>
-    <%= product.product.name %>
-    <%= product.user.email %>
+  <% @cart_product.each do  |store| %>
+      <% total = 0%>
+    <% store[1].each do  |product| %>
+      <%= product.id %>
+      <%= product.product.name %>
+      <%= product.user.email %>
+      <%= product.product.price_cents / 100%>
+      <% total += (product.product.price_cents / 100) * product.quantity%>
+        <%= simple_form_for [product], :namespace => product.id do |f| %>
+        <%= f.input :quantity, collection: 1..product.product.stock, selected: product.quantity , :input_html => { :class => 'select_quantity' }%>
+        <% end %>
+      <%= link_to "suprimer", cart_path(product.id), :method => :delete %>
+    <% end %>
 
-      <%= simple_form_for [product] do |f| %>
-      <%= f.input :quantity, collection: 1..product.product.stock, selected: product.quantity %>
-      <% end %>
-    <%= link_to "suprimer", cart_path(product.id), :method => :delete %>
+
+    <p>total</p>
+    <%= total %>
+    <%= link_to 'buy',"",:store_id => store[0], :id => "checkout-buy" %>
+    <p> next store</p>
   <% end %>
-  <%= link_to 'buy',"",:store_id => store[0], :id => "checkout-buy" %>
-
-
-  <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-<% end %>
+</div>

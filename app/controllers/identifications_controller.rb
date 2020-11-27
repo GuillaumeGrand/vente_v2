@@ -11,7 +11,7 @@ class IdentificationsController < ApplicationController
     user = User.find(current_user.id)
 
     acount = Stripe::CreateUser.new.call
-    Stripe::AccountLinks.new(acount).call
+    Stripe::AccountLinksUser.new(acount).call
 
     redirect_to root_path
   end
@@ -38,10 +38,6 @@ class IdentificationsController < ApplicationController
   def trader_update
     trader = Trader.find(current_trader.id)
     toto = Stripe::CreateFile.new(params['front'], trader.stripe_account)
-    p "1" * 150
-    p toto
-    p params['front']
-    p "1" * 150
     Stripe::UpdateTrader.new(trader.stripe_account,  params['token-account']).call
     redirect_to root_path
   end

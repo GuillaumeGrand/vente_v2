@@ -11,7 +11,17 @@ class CartsController < ApplicationController
   end
 
   def update
+    cart_id = params["cart_id"]
+    product_quantity = params["quantity"]
+    cart = Cart.find(cart_id)
+    cart.quantity = product_quantity
+    cart.save
 
+    # respond_to do |format|
+    #   format.js {render inline: "location.reload();" }
+    # end
+
+    redirect_to "http://localhost:3000/carts"
   end
 
   def destroy
