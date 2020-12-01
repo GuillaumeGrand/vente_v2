@@ -11,17 +11,19 @@ class CartsController < ApplicationController
   end
 
   def update
-    cart_id = params["cart_id"]
-    product_quantity = params["quantity"]
-    cart = Cart.find(cart_id)
-    cart.quantity = product_quantity
-    cart.save
+    if params["quantity"].empty? == false
+      cart_id = params["cart_id"]
+      product_quantity = params["quantity"]
+      cart = Cart.find(cart_id)
+      cart.quantity = product_quantity
+      cart.save
+    end
 
-    # respond_to do |format|
-    #   format.js {render inline: "location.reload();" }
-    # end
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
 
-    redirect_to "http://localhost:3000/carts"
+
   end
 
   def destroy
@@ -32,8 +34,9 @@ class CartsController < ApplicationController
   end
 
   def index
-    cart_product = Cart.where(:user_id => current_user.id)
-    @cart_product = cart_product.group_by(&:store_id)
+    p "1" * 150
+    cart_product = Cart.where(:user_id => current_user.id).order! 'created_at DESC'
+    p @cart_product = cart_product.group_by(&:store_id)
   end
 
   private

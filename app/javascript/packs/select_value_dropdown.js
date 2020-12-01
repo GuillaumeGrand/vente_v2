@@ -5,18 +5,10 @@ window.addEventListener('DOMContentLoaded', function(){
 
     value.addEventListener('change', function() {
       quantity = String(this.value)
-      id = this["id"]
-      cart_id = id.charAt(0);
 
-      fetch("update_cart", {
-        method: "PATCH",
-        body: JSON.stringify({ cart_id: cart_id,
-                quantity: quantity }),
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': $( 'meta[name="csrf-token"]' ).attr( 'content' )
-        }
-      });
+      a = this.closest("a").getAttribute("data-params") + quantity
+      this.closest("a").setAttribute("data-params", a)
+
     });
   }
 })

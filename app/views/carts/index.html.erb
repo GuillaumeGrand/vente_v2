@@ -1,6 +1,4 @@
 <div class="container">
-  <h1>Carts#index</h1>
-
   <% @cart_product.each do  |store| %>
       <% total = 0%>
     <% store[1].each do  |product| %>
@@ -8,9 +6,11 @@
       <%= product.product.name %>
       <%= product.user.email %>
       <%= product.product.price_cents / 100%>
-      <% total += (product.product.price_cents / 100) * product.quantity%>
-        <%= simple_form_for [product], :namespace => product.id do |f| %>
-        <%= f.input :quantity, collection: 1..product.product.stock, selected: product.quantity , :input_html => { :class => 'select_quantity' }%>
+        <% total += (product.product.price_cents / 100) * product.quantity%>
+        <%= simple_form_for product do |f| %>
+        <a href="update_cart" data-remote="true"  data-params=<%="cart_id=#{product.id}&quantity="%>  data-method='patch' >
+          <%= f.input :quantity, collection: 1..product.product.stock, selected: product.quantity , :input_html => { :class => 'select_quantity' }%>
+        </a>
         <% end %>
       <%= link_to "suprimer", cart_path(product.id), :method => :delete %>
     <% end %>
@@ -19,6 +19,6 @@
     <p>total</p>
     <%= total %>
     <%= link_to 'buy',"",:store_id => store[0], :id => "checkout-buy" %>
-    <p> next store</p>
+    <p> next store<p>
   <% end %>
 </div>
