@@ -1,23 +1,39 @@
-<% if current_trader.store.nil?%>
-  <div>
-    <%= link_to "crée la boutique", new_store_path %>
-  </div>
-<% else %>
-  <div>
-    <%= link_to "mise a jours de la boutique", edit_store_path(@store) %>
-  </div>
-<% end %>
+<div class="container">
+  <% if current_trader.store.nil?%>
+    <div>
+      <%= link_to "crée la boutique", new_store_path %>
+    </div>
+  <% else %>
+    <div>
+      <%= link_to "mise a jours de la boutique", edit_store_path(@store) %>
+    </div>
+  <% end %>
 
-<% if current_trader.store.nil? ==  false %>
-  <div>
-    <%= link_to "crée un produit", new_store_product_path(current_trader.store.id) %>
-  </div>
-  <div>
-    <%= link_to "mise a jours des produits", store_path(current_trader.store.id) %>
-  </div>
-<% end %>
+  <% if current_trader.store.nil? ==  false %>
+    <div>
+      <%= link_to "crée un produit", new_store_product_path(current_trader.store.id) %>
+    </div>
+    <div>
+      <%= link_to "mise a jours des produits", store_path(current_trader.store.id) %>
+    </div>
+  <% end %>
 
-<div>
-  <%= link_to "abonnement", index_sub_path%>
+  <div>
+    <%= link_to "abonnement", index_sub_path%>
+  </div>
+  <div class="order_contenair">
+    <% @orders.each_with_index do |cart, index| %>
+     <h4><%= cart[1][0].user.email %></h4>
+     <h4><%= "total :#{@amount[index]}" %></h4>
+      <% cart[1].each do |order| %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h4><%= order.product.name %></h4>
+            <h3><%= "prix unitaire : #{order.product.price_cents / 100}"%></h3>
+            <p><%= "quantiter : #{order.quantity}" %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-

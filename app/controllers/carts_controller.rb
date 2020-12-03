@@ -34,9 +34,8 @@ class CartsController < ApplicationController
   end
 
   def index
-    p "1" * 150
     cart_product = Cart.where(:user_id => current_user.id).order! 'created_at DESC'
-    p @cart_product = cart_product.group_by(&:store_id)
+    @cart_product = cart_product.group_by(&:store_id)
   end
 
   private

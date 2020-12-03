@@ -3,4 +3,5 @@ class Store < ApplicationRecord
   validates :photos, presence: true
   belongs_to :trader
   has_many :products
+  has_many :orders
 end
