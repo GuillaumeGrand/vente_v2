@@ -1,39 +1,44 @@
-<div class="container">
-  <% if current_trader.store.nil?%>
-    <div>
-      <%= link_to "crée la boutique", new_store_path %>
-    </div>
-  <% else %>
-    <div>
-      <%= link_to "mise a jours de la boutique", edit_store_path(@store) %>
-    </div>
-  <% end %>
+<div class="dashbord_container">
+  <div class="left_bar">
+    <% if current_trader.store.nil?%>
+      <div>
+        <%= link_to "crée la boutique", new_store_path %>
+      </div>
+    <% else %>
+      <div>
+        <%= link_to "mise a jours de la boutique", edit_store_path(@store) %>
+      </div>
+    <% end %>
 
-  <% if current_trader.store.nil? ==  false %>
-    <div>
-      <%= link_to "crée un produit", new_store_product_path(current_trader.store.id) %>
-    </div>
-    <div>
-      <%= link_to "mise a jours des produits", store_path(current_trader.store.id) %>
-    </div>
-  <% end %>
-
-  <div>
+    <% if current_trader.store.nil? ==  false %>
+      <div>
+        <%= link_to "crée un produit", new_store_product_path(current_trader.store.id) %>
+      </div>
+      <div>
+        <%= link_to "mise a jours des produits", store_path(current_trader.store.id) %>
+      </div>
+    <% end %>
     <%= link_to "abonnement", index_sub_path%>
   </div>
-  <div class="order_contenair">
+
+  <div class="order_container">
     <% @orders.each_with_index do |cart, index| %>
-     <h4><%= cart[1][0].user.email %></h4>
-     <h4><%= "total :#{@amount[index]}" %></h4>
+      <div class="order_unit">
+        <div class="order_name">
+          <h4><%= cart[1][0].user.email %></h4>
+          <h4><%= "total :#{@amount[index]}" %></h4>
+          <%= link_to 'commande terminé', validation_order_path(:cart => cart), method: :post, remote: true %>
+        </div>
       <% cart[1].each do |order| %>
-        <div class="card-product">
-          <div class="card-product-infos">
-            <h4><%= order.product.name %></h4>
-            <h3><%= "prix unitaire : #{order.product.price_cents / 100}"%></h3>
-            <p><%= "quantiter : #{order.quantity}" %></p>
+        <div class="card-order">
+          <div class="card-order-infos" id= "order_info">
+            <h4><%= order.product.name %></h3>
+            <h3><%= "quantiter : #{order.quantity}" %></p>
+            <p><%= "prix unitaire : #{order.product.price_cents / 100}"%></p>
           </div>
         </div>
       <% end %>
+      </div>
     <% end %>
   </div>
 </div>

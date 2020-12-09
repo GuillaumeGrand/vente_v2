@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   root to: "stores#index"
-  get '/identification', to: 'identifications#identification', as: "identification"
-  get '/dashboard', to: 'orders#dashboard', as: "dashboard"
+
+  get '/dashboard', to: 'orders#dashboard', as: :dashboard
+  post '/order_update', to: 'orders#validation_order', as: :validation_order
 
   resources :stores do
     resources :products, only: [ :index, :new, :create ]
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     get 'checkout', to: 'checkouts#checkout', as: 'checkout'
   end
 
+  get '/identification' => 'identifications#identification', as: :identification
   get '/trader_person' => 'identifications#trader_person', as: :trader_person
 
   get '/trader_edit' => 'identifications#trader_edit', as: :trader_edit

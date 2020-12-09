@@ -1,3 +1,33 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.card-order {
+  border: solid;
+  border-color: #DDDDDD;
+  border-width: 1px;
+  border-radius: 8px;
+}
+
+.dashbord_container{
+  display: flex;
+  flex-direction: row;
+}
+
+.order_container{
+  flex-grow: 4;
+  margin: 16px;
+}
+
+.order_unit{
+  border: solid;
+  border-color: red;
+  border-width: 1px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.order_name{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
