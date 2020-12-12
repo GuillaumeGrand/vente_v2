@@ -109,7 +109,7 @@ class SubscriptionsController < ApplicationController
   when 'checkout.session.completed'
     subscription = event["data"]["object"]["subscription"]
     @@trader.update(stripe_subscription_id: subscription)
-p "1" * 200
+
   when 'invoice.paid'
     # Continue to provision the subscription as payments continue to be made.
     # Store the status in your database and check when a user accesses your service.
