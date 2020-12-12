@@ -4,4 +4,6 @@ class Store < ApplicationRecord
   belongs_to :trader
   has_many :products
   has_many :orders
+
+  searchkick
 end

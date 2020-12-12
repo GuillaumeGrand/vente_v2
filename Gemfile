@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'searchkick', '~> 4.0'
 gem 'gon', '~> 6.1'
 gem 'country_select', '~> 4.0'
 gem 'money-rails'

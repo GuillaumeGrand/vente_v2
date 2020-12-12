@@ -4,13 +4,16 @@
       <h4>Circuit Court</h4>
     </div>
   </a>
+
   <div class="wrap">
-     <div class="search">
-        <input type="text" class="searchTerm" placeholder="What are you looking for?">
-        <button type="submit" class="searchButton">
-          <i class="fa fa-search"></i>
-       </button>
-     </div>
+    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+        <div class="search">
+          <input class="searchTerm" type="text" name="search[query]" placeholder="What are you looking for?"/>
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+    <% end %>
   </div>
 
   <div class="nav-links"><a><%= link_to "identifiez-vous", identification_path %></a></div>
@@ -33,3 +36,6 @@
 <div class="navbar_3">
 
 </div>
+
+
+
