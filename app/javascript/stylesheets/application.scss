@@ -14,4 +14,18 @@
  *= require_self
  */
 
-@import "bootstrap/scss/bootstrap";
+ @import "~bootstrap/scss/bootstrap";
+
+ @import "billing";
+ @import "card";
+ @import "carts";
+ @import "dropdown";
+ @import "footer";
+ @import "indentification";
+ @import "navbar";
+ @import "orders";
+ @import "products";
+ @import "search_bar";
+ @import "stores";
+ @import "stripes";
+ @import "subscrition";
