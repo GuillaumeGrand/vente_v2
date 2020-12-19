@@ -62,6 +62,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-#   config.stripe.secret_key = Rails.application.credentials.stripe[:development][:secret_key]
-# config.stripe.publishable_key = Rails.application.credentials.stripe[:development][:publishable_key]
+
+
+  config.stripe.secret_key = Rails.application.credentials.stripe&.dig(:development, :secret_key)
+  config.stripe.publishable_key = Rails.application.credentials.stripe&.dig(:development, :publishable_key)
 end
