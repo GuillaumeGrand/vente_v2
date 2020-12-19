@@ -63,6 +63,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
 
+
   config.stripe.secret_key = Rails.application.credentials.stripe&.dig(:development, :secret_key)
   config.stripe.publishable_key = Rails.application.credentials.stripe&.dig(:development, :publishable_key)
 end
