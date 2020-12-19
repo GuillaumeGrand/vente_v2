@@ -2,10 +2,10 @@ class StoresController < ApplicationController
   def index
     if params["search"].present?
       @stores = Store.search(params["search"]["query"])
-     else
+    else
       @stores = Store.search('*')
-     end
     end
+  end
 
   def show
     @store = Store.find(params[:id])
