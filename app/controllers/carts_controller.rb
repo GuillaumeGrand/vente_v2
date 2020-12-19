@@ -7,7 +7,7 @@ class CartsController < ApplicationController
     cart.user_id = user
     cart.save
 
-    redirect_to carts_path
+    redirect_to store_path(cart.store_id)
   end
 
   def update

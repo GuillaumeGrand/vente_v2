@@ -69,6 +69,11 @@
   object-fit: cover;
 }
 
+.card-product a {
+  flex-grow:1;
+  display: flex;
+  align-items: center;
+}
 .card-product h2 {
   font-size: 16px;
   font-weight: bold;
@@ -85,4 +90,12 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.card-product-infos {
+  flex-grow:1;
+}
+
+.card-trip-pricing{
+  width: 210px;
 }

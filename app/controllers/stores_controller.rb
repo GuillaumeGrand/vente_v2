@@ -9,6 +9,7 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find(params[:id])
+    @cart = Cart.new
   end
 
   def new

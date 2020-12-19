@@ -1,19 +1,22 @@
 <div class="container">
   <% @store.products.each do |product| %>
-    <%= link_to controller: "products", action: "show", id: product, store_id: @store do %>
       <div class="card-product">
-        <%= cl_image_tag(product.photos[0].key, :width => 250, :height => 200) if product.photos.present? %>
+    <%= link_to controller: "products", action: "show", id: product, store_id: @store do %>
+          <div>
+            <%= cl_image_tag(product.photos[0].key, :width => 250, :height => 200) if product.photos.present? %>
+          </div>
           <div class="card-product-infos">
             <h2><%= product.name %></h2>
             <p><%= product.presentation %></p>
           </div>
-          <h2 class="card-trip-pricing"><%= product.price %></h2>
+    <% end %>
+          <div class="card-trip-pricing">
+            <h2><%= product.price %></h2>
+            <%= button_to "Ajouter au panier", carts_path(cart: { product_id: product.id, store_id: product.store_id, quantity: 1}), :method => :post%>
+          </div>
           <% if current_trader == @store.trader %>
             <%= link_to "S", product_path(product), :method => :delete,class: "btn btn-light card-trip-user avatar-bordered" %>
           <% end %>
       </div>
-    <% end %>
   <% end %>
 </div>
-
-

@@ -26,5 +26,6 @@ class CheckoutsController < ApplicationController
       render json: session
 
   end
+
+
 end
-# Total.new(cart).call

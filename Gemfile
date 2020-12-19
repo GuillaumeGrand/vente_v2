@@ -9,7 +9,6 @@ gem 'country_select', '~> 4.0'
 gem 'money-rails'
 gem 'stripe-rails'
 gem 'cloudinary', '~> 1.16.0'
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'simple_form'
 gem 'devise', '~> 4.7', '>= 4.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -40,6 +39,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails'
 end
 
 group :development do
