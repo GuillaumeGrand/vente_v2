@@ -2,9 +2,11 @@ class OrdersController < ApplicationController
   def dashboard
     current_trader.store ? @store = Store.find(current_trader.store.id) : ""
 
-    if current_trader.store != nil do
+    if current_trader.store != nil
       @order = Order.where(:store_id => current_trader.store.id, :order_validation => false)
       @orders = @order.group_by(&:user_id)
+    else
+      @orders = []
     end
 
     @amount = SumOrders.new(@orders).call
