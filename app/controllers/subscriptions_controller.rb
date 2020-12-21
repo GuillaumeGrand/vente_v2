@@ -23,8 +23,8 @@ class SubscriptionsController < ApplicationController
     # is redirected to the success page.
     begin
       session = Stripe::Checkout::Session.create(
-        success_url: 'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url: 'http://localhost:3000/',
+        success_url: '/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: '/',
         payment_method_types: ['card'],
         mode: 'subscription',
         line_items: [{

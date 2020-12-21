@@ -7,8 +7,8 @@ module Stripe
     def call
       account_links = Stripe::AccountLink.create({
         account: @account["id"],
-        refresh_url: 'http://localhost:3000/',
-        return_url: 'http://localhost:3000/',
+        refresh_url: '/',
+        return_url: '/',
         type: 'account_onboarding',
       })
     end

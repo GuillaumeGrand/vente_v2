@@ -19,8 +19,8 @@ class CheckoutsController < ApplicationController
             destination: cart[0].store.trader.stripe_account,
           },
         },
-        success_url: "http://localhost:3000",
-        cancel_url: "http://localhost:3000/stores/1",
+        success_url: "/",
+        cancel_url: "/stores/1",
       })
       CreateOrder.new(cart,user_id).call
       render json: session
