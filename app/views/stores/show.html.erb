@@ -16,6 +16,7 @@
           </div>
           <% if current_trader == @store.trader %>
             <%= link_to "S", product_path(product), :method => :delete,class: "btn btn-light card-trip-user avatar-bordered" %>
+            <%= link_to "u", edit_product_path(product), :method => :get,class: "btn btn-light card-trip-user avatar-bordered" %>
           <% end %>
       </div>
   <% end %>

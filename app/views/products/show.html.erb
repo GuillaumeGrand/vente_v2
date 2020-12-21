@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div id = "zoom_photo">
-        <%= cl_image_tag(@product.photos.first.key ) %>
+        <%= cl_image_tag(@product.photos.first.key, :width => 416, :height => 416 ) %>
     </div>
   </div>
 
