@@ -5,7 +5,7 @@
           <a href = "stores/<%= store.id %>">
             <div class="card-trip">
               <%= cl_image_tag store.photos.key if store.photos.present? %>
-              <div class="card-trip-infos">
+              <div class="card-store-infos">
                 <div>
                   <h2><%= store.name.html_safe %></h2>
                   <p><%= store.presentation.html_safe %></p>

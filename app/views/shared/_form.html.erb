@@ -3,9 +3,9 @@
     <%= simple_form_for @store do |f| %>
       <%= f.error_notification %>
 
-      <%= f.text_area :name, placeholder: 'name' %>
+      <%= f.text_area :name, placeholder: 'name', maxlength: 25 %>
 
-      <%= f.text_area :presentation, placeholder: 'presentation' %>
+      <%= f.text_area :presentation, placeholder: 'presentation', maxlength: 50 %>
 
       <%= f.input :photos, as: :file, label: false %>
 
