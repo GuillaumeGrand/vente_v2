@@ -11,8 +11,8 @@
           </div>
     <% end %>
           <div class="card-trip-pricing">
-            <h2><%= product.price %></h2>
-            <%= button_to "Ajouter au panier", carts_path(cart: { product_id: product.id, store_id: product.store_id, quantity: 1}), :method => :post%>
+            <h2><%= product.price %> € </h2>
+            <%= button_to "Ajouter au panier", carts_path(cart: { product_id: product.id, store_id: product.store_id, quantity: 1}), :method => :post, class: "btn btn-success"%>
           </div>
           <% if current_trader == @store.trader %>
             <%= link_to "S", product_path(product), :method => :delete,class: "btn btn-light card-trip-user avatar-bordered" %>

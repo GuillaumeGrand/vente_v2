@@ -11,6 +11,9 @@ class CartsController < ApplicationController
   end
 
   def update
+    p "1" * 150
+    p params["quantity"]
+
     if params["quantity"].empty? == false
       cart_id = params["cart_id"]
       product_quantity = params["quantity"]
