@@ -9,9 +9,10 @@ class IdentificationsController < ApplicationController
 
   def user_info
     user = User.find(current_user.id)
+    base_url = Rails.application.config_for(:domain)[:base_url]
 
     acount = Stripe::CreateUser.new.call
-    Stripe::AccountLinksUser.new(acount).call
+    Stripe::AccountLinksUser.new(acount, base_url).call
 
     redirect_to root_path
   end
@@ -21,9 +22,10 @@ class IdentificationsController < ApplicationController
   end
 
   def trader_info_create
+    base_url = Rails.application.config_for(:domain)[:base_url]
     trader = Trader.find(current_trader.id)
     account = Stripe::CreateTrader.new( params['token-account']).call
-    Stripe::AccountLinks.new(account, trader.id).call
+    Stripe::AccountLinks.new(account, trader.id, base_url).call
     trader.update(stripe_account: account["id"])
     # person = Stripe::CreatePerson.new(account["id"], params['token-person']).call
     # trader.update(person_id: person["id"])
