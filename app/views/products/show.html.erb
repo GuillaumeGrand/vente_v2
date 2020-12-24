@@ -1,4 +1,4 @@
-<div class="container">
+<div class="page_product container">
   <div id= "show_photo">
     <div class = "product_photo">
        <% @product.photos.each do |photo| %>
@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div id = "zoom_photo">
-        <%= cl_image_tag(@product.photos.first.key, :width => 416, :height => 416 ) %>
+        <%= cl_image_tag(@product.photos.first.key) %>
     </div>
   </div>
 
@@ -16,19 +16,19 @@
     <%= @product.price %>
   </div>
 
-  <%= simple_form_for @cart do |f| %>
-        <%= f.error_notification %>
+  <div>
+    <%= simple_form_for @cart do |f| %>
+          <%= f.error_notification %>
 
-        <%= f.hidden_field :product_id, value: "#{@product.id}" %>
+          <%= f.hidden_field :product_id, value: "#{@product.id}" %>
 
-        <%= f.hidden_field :store_id, value: "#{@product.store.id}" %>
+          <%= f.hidden_field :store_id, value: "#{@product.store.id}" %>
 
-        <%= f.input :quantity, collection: [1, 2, 3, 4, 5], label: "qantiter :", selected: 1 %>
+          <%= f.input :quantity, collection: [1, 2, 3, 4, 5], label: "qantiter :", selected: 1 %>
 
-        <%= f.button :submit,'panier', class: "btn-primary" %>
+          <%= f.button :submit,'panier', class: "btn-primary" %>
 
-        <%= link_to 'Achat', stores_path, :class => 'button' %>
-  <% end %>
-
-  <p>adresse de livraison</p>
+          <%#= link_to 'Achat', stores_path, :class => 'button' %>
+    <% end %>
+  </div>
 </div>
