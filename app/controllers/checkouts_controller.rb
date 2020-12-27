@@ -4,6 +4,7 @@ class CheckoutsController < ApplicationController
   def create_checkout
     user_id = current_user.id
     cart = FetchCart.new(params[:store_id],user_id).call
+    base_url = Rails.application.config_for(:domain)[:base_url]
 
       session = Stripe::Checkout::Session.create({
         payment_method_types: ['card'],
@@ -19,7 +20,7 @@ class CheckoutsController < ApplicationController
             destination: cart[0].store.trader.stripe_account,
           },
         },
-        success_url: "/",
+        success_url: "base_url",
         cancel_url: "/stores/1",
       })
       CreateOrder.new(cart,user_id).call
