@@ -16,7 +16,16 @@
     <% end %>
   </div>
 
-  <div class="nav-links"><a><%= link_to "identifiez-vous", identification_path %></a></div>
+  <div class="nav-links"><a>
+    <% if trader_signed_in? %>
+      <%= link_to current_trader.email, identification_path %></div>
+    <% elsif user_signed_in? %>
+      <%= link_to current_user.email, identification_path %></div>
+    <% else %>
+      <%= link_to "identifiez-vous", identification_path %>
+    <% end %></a>
+  </div>
+
   <div class="nav-links"><a>
     <% if trader_signed_in? %>
       <%= link_to "tableau de bord", dashboard_path %>
