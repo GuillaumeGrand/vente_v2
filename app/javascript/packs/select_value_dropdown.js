@@ -1,5 +1,5 @@
 window.addEventListener("turbolinks:load", function(){
-  console.log(1)
+
   let select_quantity = document.querySelectorAll('.select_quantity')
 
   for(const [key, value] of Object.entries(select_quantity)){

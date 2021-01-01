@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   def set_js_environment
     gon.stripe_publishable_key = ENV["STRIPE_PUBLISHABLE_KEY"]
   end
+
 end

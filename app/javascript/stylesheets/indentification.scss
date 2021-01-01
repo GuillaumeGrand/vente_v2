@@ -1,3 +1,91 @@
-// Place all the styles related to the Indentification controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.indentification_page{
+  display: flex;
+  min-height: 100vh;
+}
+
+.indentification_img {
+  flex: 1.4;
+}
+
+.indentification_img img{
+  object-fit: cover;
+  width:100%;
+  height:100%;
+}
+
+.identication_data{
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.identication_data h3 {
+  margin-top: 64px;
+  color: #552C00;
+  font-weight: bold;
+}
+
+.identication_data h2 {
+  margin-top: 64px;
+  font-weight: 800;
+  font-size: 1.75rem;
+  line-height: 1.14285714;
+  color: #37517e;
+}
+
+.actions{
+  margin-top: 16px;
+}
+
+.identication_alt{
+  display: flex;
+  flex-direction: row;
+  margin-top: 32px;
+}
+
+.identication_alt a{
+  margin-left: 8px;
+  color:#552C00;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.identication_alt h5 {
+  color:#6F8691;
+}
+
+.identication_button{
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+}
+
+.device_identification{
+  height: 48px;
+  width: 34em;
+  margin-top: 28px;
+}
+
+#device_action{
+  background-color: #2ed06e;
+  border-color: #2ed06e;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  // -webkit-transition: background-color 2s;
+  // -webkit-transition: border-color 2s;
+}
+
+#device_action:hover{
+  background-color: #34B861;
+  border-color: #34B861;
+}
+
+@media (max-width: 1024px)
+{
+    .indentification_img
+    {
+        display: none;
+    }
+}

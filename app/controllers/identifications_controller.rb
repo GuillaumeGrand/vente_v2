@@ -1,7 +1,5 @@
 class IdentificationsController < ApplicationController
   protect_from_forgery except: :trader_update
-  def identification
-  end
 
   def info_stripe
     @user = User.find(current_user.id)

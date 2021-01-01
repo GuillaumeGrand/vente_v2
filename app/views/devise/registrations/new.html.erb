@@ -1,29 +1,50 @@
-<h2>Sign up</h2>
+<div class="indentification_page">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="indentification_img">
+    <%= image_tag ("le-petit-commerce.jpg") %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <div class= "identication_data">
+    <h3>Circuit court</h3>
+    <h2>Bienvenu dans le monde du petit commerce !</h2>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="identication_alt">
+      <h5>Deja inscrit?</h5><%= render "devise/shared/links" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="identication_button">
+      <div class= "radio_button" url="/users" value="user">
+         <input type="radio" id="f-option" name="selector" checked>
+         <label for="f-option">Personnel</label>
 
-<%= render "devise/shared/links" %>
+         <div class="check"></div>
+      </div>
+      <div class= "radio_button" url="/traders" value="trader">
+         <input type="radio" id="s-option" name="selector" >
+         <label for="s-option">Entreprise</label>
+
+         <div class="check"><div class="inside"></div></div>
+      </div>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "device_identification" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password(6 characters minimum)", class: "device_identification" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation", class: "device_identification" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "device_identification", id: "device_action" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -26,4 +26,4 @@ require("packs/trader_token.js")
 require("packs/success.js")
 require("packs/zoom_photo.js")
 require("packs/select_value_dropdown.js")
-
+require("packs/identification.js")
