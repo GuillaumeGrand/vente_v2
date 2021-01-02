@@ -67,19 +67,40 @@
   margin-top: 28px;
 }
 
+.device_link{
+  color:#552C00;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.device_link:hover{
+  font-color:#552C00;
+}
+
 #device_action{
   background-color: #2ed06e;
   border-color: #2ed06e;
   font-weight: bold;
   color: #fff;
   letter-spacing: 1px;
-  // -webkit-transition: background-color 2s;
-  // -webkit-transition: border-color 2s;
 }
 
 #device_action:hover{
   background-color: #34B861;
   border-color: #34B861;
+}
+
+#divice_sign_in{
+  background-color: #804D15;
+  border-color: #804D15;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+#divice_sign_in:hover{
+  background-color: #552C00;
+  border-color: #552C00;
 }
 
 @media (max-width: 1024px)
