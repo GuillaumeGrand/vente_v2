@@ -1,25 +1,34 @@
 <div class="container">
   <% @cart_product.each do  |store| %>
     <div class="cart-store">
-    <h2><%= store[1].first.store.name %></h2>
-      <% total = 0%>
-    <% store[1].each do  |product| %>
-      <div class="cart-product">
-       <p><%= product.product.name %></p>
-        <%= product.product.price_cents / 100%> € l'unité
-          <% total += (product.product.price_cents / 100) * product.quantity%>
-          <%= simple_form_for product do |f| %>
-          <a href="update_cart" data-remote="true"  data-params=<%="cart_id=#{product.id}&quantity="%>  data-method='patch' >
-            <%= f.input :quantity, collection: 1..product.product.stock, selected: product.quantity , :input_html => { :class => 'select_quantity' }%>
-          </a>
-          <% end %>
-        <%= link_to "suprimer", cart_path(product.id), :method => :delete %>
+      <div class="cart_titel">
+        <h2><%= store[1].first.store.name %></h2>
+        <h6>Prix</h6>
       </div>
-    <% end %>
-
-
-    <p>total: <%= total %> €</p>
-    <%= link_to 'buy',"",:store_id => store[0], :id => "checkout-buy", :class => "btn btn-success"%>
+      <% total = 0%>
+      <% store[1].each do  |product| %>
+      <div class="cart_container">
+        <%= cl_image_tag(product.product.photos[0].key, :width => 180, :height => 180) if product.product.photos.present?%>
+        <div class="cart-product">
+         <p><%= product.product.name %></p>
+            <% total += (product.product.price_cents / 100) * product.quantity%>
+            <div class="cart_quantity">
+              <h6>Qté:</h6>
+              <%= simple_form_for product do |f| %>
+              <a href="update_cart" data-remote="true"  data-params=<%="cart_id=#{product.id}&quantity="%>  data-method='patch' >
+                <%= f.input :quantity, collection: 1..product.product.stock, selected: product.quantity , :input_html => { :class => 'select_quantity' }%>
+              </a>
+              <% end %>
+              <%= link_to "suprimer", cart_path(product.id), :method => :delete, id: "cart_sup" %>
+            </div>
+        </div>
+         <%= product.product.price_cents / 100%> €
+      </div>
+      <% end %>
+      <div class="cart_buy">
+        <%= link_to 'buy',"",:store_id => store[0], :id => "checkout-buy", :class => "btn btn-link"%>
+        <p>Sous-total:<%= total %> €</p>
+      </div>
     </div>
   <% end %>
 </div>
