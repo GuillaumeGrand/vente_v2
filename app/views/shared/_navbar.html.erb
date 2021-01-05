@@ -1,12 +1,14 @@
 <div class="navbar">
 
-  <a href="/">
-    <div class="logo" >
-      <h4>Circuit Court</h4>
-    </div>
-  </a>
+  <div class="nav_left">
+    <a href="/">
+      <div class="logo" >
+        <h4>Circuit Court</h4>
+      </div>
+    </a>
+  </div>
 
-  <div class="wrap">
+  <div class="nav_fill">
     <%= simple_form_for :search, url: root_path, method: :get do |f| %>
         <div class="search">
           <input class="searchTerm" type="text" name="search[query]" placeholder="What are you looking for?"/>
@@ -17,12 +19,12 @@
     <% end %>
   </div>
 
-  <div>
+  <div class="nav_right">
     <div class="nav-links"><a>
       <% if trader_signed_in? %>
-        <%= link_to current_trader.email, new_user_registration_path %></div>
+        <%= current_trader.email %>
       <% elsif user_signed_in? %>
-        <%= link_to current_user.email, new_user_registration_path %></div>
+        <%= current_user.email%>
       <% else %>
         <%= link_to "identifiez-vous", new_user_registration_path %>
       <% end %></a>
@@ -32,13 +34,14 @@
       <% if trader_signed_in? %>
         <%= link_to "tableau de bord", dashboard_path %>
       <% else %>
-        <%= link_to "Commandes"%>
+        <%= link_to "Mes achats"%>
       <% end %></a>
     </div>
 
-    <div class="nav-links cart"> <a href="/carts">
-      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-      </a>
+    <div class="nav-links cart">
+        <a href="/carts">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        </a>
     </div>
   </div>
 </div>

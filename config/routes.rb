@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   scope '/checkouts' do
     get 'create/:store_id', to: 'checkouts#create_checkout'
     get 'cancel', to: 'checkouts#cancel', as: 'checkout_cancel'
-    get 'success', to: 'checkouts#success', as: 'checkout_success'
+    get 'success/:store_id', to: 'checkouts#success', as: 'checkout_success'
     get 'checkout', to: 'checkouts#checkout', as: 'checkout'
   end
 

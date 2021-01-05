@@ -23,8 +23,6 @@ class CartsController < ApplicationController
     respond_to do |format|
       format.js {render inline: "location.reload();" }
     end
-
-
   end
 
   def destroy
@@ -42,6 +40,6 @@ class CartsController < ApplicationController
   private
 
   def cart_params
-    params.require(:cart).permit(:product_id, :store_id,:quantity )
+    params.require(:cart).permit(:product_id, :store_id,:quantity, :ip )
   end
 end

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   has_many :orders
   # after_create :stripe_acount
   # Include default devise modules. Others available are:
@@ -6,6 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   private
+
   def stripe_acount
     acount = StripeAcountUser.new.call
     StripeAcountLink.new(acount, self).call

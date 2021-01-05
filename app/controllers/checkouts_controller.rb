@@ -20,12 +20,18 @@ class CheckoutsController < ApplicationController
             destination: cart[0].store.trader.stripe_account,
           },
         },
-        success_url: base_url,
+        success_url: base_url + "/checkouts/success/#{params[:store_id]}",
         cancel_url:  base_url,
       })
-      # CreateOrder.new(cart,user_id).call
+
       render json: session
 
+  end
+
+  def success
+    user_id = current_user.id
+    cart = FetchCart.new(params[:store_id],user_id).call
+    @orders = CreateOrder.new(cart,user_id).call
   end
 
 end
