@@ -20,7 +20,7 @@
   </div>
 
   <div class="nav_right">
-    <div class="nav-links"><a>
+    <div class="nav-links" id="nav_email"><a>
       <% if trader_signed_in? %>
         <%= current_trader.email %>
       <% elsif user_signed_in? %>
@@ -34,7 +34,7 @@
       <% if trader_signed_in? %>
         <%= link_to "tableau de bord", dashboard_path %>
       <% else %>
-        <%= link_to "Mes achats"%>
+        <%= link_to "Mes achats", user_show_path %>
       <% end %></a>
     </div>
 

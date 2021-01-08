@@ -26,6 +26,27 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show
+  def user_show
+     orders = Order.where(:user_id => current_user.id).order! 'created_at DESC'
+     @stores_orders = orders.group_by(&:store_id)
+  end
+
+  def history
+    @order = Order.where(:store_id => current_trader.store.id, :order_validation => true)
+    @orders = @order.group_by(&:user_id)
+
+    respond_to do |format|
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
+  end
+
+  def orders
+    @order = Order.where(:store_id => current_trader.store.id, :order_validation => false)
+    @orders = @order.group_by(&:user_id)
+    @amount = SumOrders.new(@orders).call
+
+    respond_to do |format|
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
   end
 end

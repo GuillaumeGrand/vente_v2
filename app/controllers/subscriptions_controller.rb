@@ -14,6 +14,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def checkout_sub
+    base_url = Rails.application.config_for(:domain)[:base_url]
     data = JSON.parse(request.body.read)
 
     # See https://stripe.com/docs/api/checkout/sessions/create
@@ -23,8 +24,8 @@ class SubscriptionsController < ApplicationController
     # is redirected to the success page.
     begin
       session = Stripe::Checkout::Session.create(
-        success_url: '/success?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url: '/',
+        success_url: base_url + '/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: base_url,
         payment_method_types: ['card'],
         mode: 'subscription',
         line_items: [{

@@ -8,8 +8,13 @@ Rails.application.routes.draw do
 
   root to: "stores#index"
 
+  get '/orders', to: 'orders#orders', as: :orders
+  get '/history', to: 'orders#history', as: :history
+  get '/user_show', to: 'orders#user_show', as: :user_show
   get '/dashboard', to: 'orders#dashboard', as: :dashboard
   post '/order_update', to: 'orders#validation_order', as: :validation_order
+
+  get '/trader_show/:store_id', to: 'stores#trader_show', as: :trader_show
 
   resources :stores do
     resources :products, only: [ :index, :new, :create ]

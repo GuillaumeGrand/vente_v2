@@ -12,6 +12,11 @@ class StoresController < ApplicationController
     @cart = Cart.new
   end
 
+  def trader_show
+    @store = Store.find(current_trader.store.id)
+    # @cart = Cart.new
+  end
+
   def new
     @store = Store.new
   end

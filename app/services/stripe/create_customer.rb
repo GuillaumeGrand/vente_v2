@@ -8,7 +8,7 @@ module Stripe
     def call
        account = Stripe::Customer.create()
        trader = Trader.find(@trader_id)
-       trader.update(person_id: account["id"])
+       # trader.update(person_id: account["id"])
     end
   end
 end

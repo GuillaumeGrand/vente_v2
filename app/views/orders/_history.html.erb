@@ -1,0 +1,12 @@
+<% @orders.each_with_index do |cart, index| %>
+  <% cart[1].each do |order| %>
+    <div class="card-order">
+        <div class="card-order-infos" id= "order_info">
+            <h4> @orders</h3>
+            <h3><%= "quantiter : #{order.quantity}" %></p>
+            <p><%= "prix unitaire : #{order.product.price_cents / 100}"%></p>
+        </div>
+    </div>
+  <% end %>
+<% end %>
+

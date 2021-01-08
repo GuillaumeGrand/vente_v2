@@ -1,0 +1,3 @@
+a = document.querySelector('#dashboard_partial')
+a.innerHTML = "";
+a.insertAdjacentHTML('beforeend',"<%= escape_javascript render 'stores/new', locals: {:store => @store } %>");

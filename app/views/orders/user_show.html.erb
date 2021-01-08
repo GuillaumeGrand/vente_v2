@@ -1,0 +1,25 @@
+<div class="container">
+  <% @stores_orders.each do  |store| %>
+    <div class="cart-store">
+      <div class="cart_titel">
+        <h2><%= store[1].first.store.name %></h2>
+        <h6>Prix</h6>
+      </div>
+      <% total = 0%>
+      <% store[1].each do  |product| %>
+      <div class="cart_container">
+        <%= cl_image_tag(product.product.photos[0].key, :width => 180, :height => 180) if product.product.photos.present?%>
+        <div class="cart-product">
+         <p><%= product.product.name %></p>
+            <% total += (product.product.price_cents / 100) * product.quantity%>
+        </div>
+         <%= product.product.price_cents / 100%> €
+      </div>
+      <% end %>
+
+      <div class="cart_buy">
+        <p>Sous-total:<%= total %> €</p>
+      </div>
+    </div>
+  <% end %>
+</div>
