@@ -13,9 +13,10 @@
             <h2><%= product.price %> € </h2>
             <%= button_to "Ajouter au panier", carts_path(cart: {product_id: product.id, store_id: product.store_id, quantity: 1}), :method => :post, class: "btn btn-success"%>
           </div>
-          <% if current_trader == @store.trader %>
-            <%= link_to "S", product_path(product), :method => :delete,class: "btn btn-light card-trip-user avatar-bordered" %>
-            <%= link_to "u", edit_product_path(product), :method => :get,class: "btn btn-light card-trip-user avatar-bordered" %>
-          <% end %>
+          <div class="delete_product">
+            <% if current_trader == @store.trader %>
+              <%= link_to "Suprimer", product_path(product), :method => :delete,class: "btn btn-light card-trip-user avatar-bordered", :data => {:confirm => 'Are you sure?'} %>
+            <% end %>
+          </div>
       </div>
   <% end %>

@@ -1,0 +1,121 @@
+.left_bar {
+  height: 100vh;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: #FFFFFF;
+  border-right: 1px solid #d7d9e4;
+  padding: 7px 10px 10px 10px;
+  margin-top: 10px;
+}
+
+.left_bar li {
+  padding-left: 8px;
+  padding-right: 8px;
+  text-align: left;
+  // list-style: none;
+  border-top: 1px solid #eee;
+  height: 49px;
+  display:flex;
+  align-items: center;
+}
+
+.left_bar li a {
+  color: black;
+}
+
+.left_bar li a:hover {
+  color: black;
+}
+
+.price_input{
+  background-image: none !important;
+  border-color: #d7d9e4 !important;
+}
+
+.new_stores{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.new_stores form{
+  margin-top: 1em;
+}
+
+.dasboard_button {
+  color:#f2f2f2;
+}
+
+.dasboard_button:hover {
+  text-decoration: none;
+  color:#f2f2f2;
+}
+
+.dasboard_input{
+  background-image: none !important;
+
+  margin: 0px !important;
+  height: 48px;
+  width: 34em;
+  margin-top: 28px;
+  border-style: solid;
+  border-color: #d3d5d8 !important;
+  border-width: 1px;
+  border-radius: 4px;
+  -webkit-transition: border-color 0.5s;
+  -webkit-appearance: none;
+}
+
+.update_store{
+  background-color: #2ed06e;
+  border-color: #2ed06e;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  transition-duration: 0.5s;
+}
+
+.update_store:hover{
+  color: #fff !important;
+  background-color: #34B861;
+}
+
+.dasboard_input:hover{
+  border-color: #829CA9;
+  transition-duration: 500ms;
+}
+
+.dasboard_input:focus-within{
+  border-color: #804D15 !important;
+  box-shadow: 0 0 0 0.2rem rgb(128, 77, 21);
+}
+
+.was-validated .form-control:valid:focus, .form-control.is-valid:focus {
+    border-color: #804D15;
+    box-shadow: 0 0 0 0.2rem rgb(128, 77, 21);
+}
+
+.delete_product{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100px;
+}
+
+.delete_product a{
+  background-color: red;
+  color: #FFFFFF;
+}
+
+.delete_product a:hover{
+  background-color: red;
+  color: #FFFFFF;
+}
+
+.delete_product a{
+  margin-right: 8px;
+}
+
+#file-upload-button{
+ background-color: red !important;
+}

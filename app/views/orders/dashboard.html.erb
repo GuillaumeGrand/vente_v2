@@ -1,31 +1,19 @@
 <div class="dashbord_container">
-  <div class="left_bar">
-    <% if current_trader.store.nil?%>
-      <div>
-        <%= link_to "crée la boutique", new_store_path, remote: true %>
-      </div>
-    <% else %>
-      <div>
-        <%= link_to "mise a jours de la boutique", edit_store_path(@store), remote: true %>
-      </div>
-    <% end %>
+    <ul class="left_bar">
+      <% if current_trader.store.nil?%>
+        <li><%= link_to "crée la boutique", new_store_path, class: "dasboard_button", remote: true %></li>
+      <% else %>
+        <li><%= link_to "mise a jours de la boutique", edit_store_path(@store), class: "dasboard_button", remote: true %></li>
+      <% end %>
 
-    <% if current_trader.store.nil? ==  false %>
-      <div>
-        <%= link_to "crée un produit", new_store_product_path(current_trader.store.id), remote: true %>
-      </div>
-      <div>
-        <%= link_to "mise a jours des produits", trader_show_path(current_trader.store.id), remote: true %>
-      </div>
-      <div>
-        <%= link_to "commande", orders_path , remote: true %>
-      </div>
-      <div>
-        <%= link_to "historique des commande", history_path , remote: true %>
-      </div>
-    <% end %>
-    <%= link_to "abonnement", index_sub_path, remote: true %>
-  </div>
+      <% if current_trader.store.nil? ==  false %>
+        <li><%= link_to "crée un produit", new_store_product_path(current_trader.store.id), class: "dasboard_button", remote: true %></li>
+        <li><%= link_to "mise a jours des produits", trader_show_path(current_trader.store.id), class: "dasboard_button", remote: true %></li>
+        <li><%= link_to "commande", orders_path , class: "dasboard_button", remote: true %></li>
+        <li><%= link_to "historique des commande", history_path , class: "dasboard_button", remote: true %></li>
+      <% end %>
+        <li><%= link_to "abonnement", index_sub_path, class: "dasboard_button" %></li>
+    </ul>
 
   <div class="order_container" id="dashboard_partial">
     <h1>Bienvenu dans votre tableau de bord !</h1>

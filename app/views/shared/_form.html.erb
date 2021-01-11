@@ -1,15 +1,14 @@
-<div class="row justify-content-center">
-  <div class="col-12 col-lg-6">
-    <%= simple_form_for @store do |f| %>
-      <%= f.error_notification %>
+<div class="new_stores">
+  <%= simple_form_for @store do |f| %>
+    <%= f.error_notification %>
 
-      <%= f.text_area :name, placeholder: 'name', maxlength: 25 %>
+    <%= f.input :name, placeholder: 'name', maxlength: 25, input_html: { class: 'dasboard_input' }%>
 
-      <%= f.text_area :presentation, placeholder: 'presentation', maxlength: 50 %>
+    <%= f.input :presentation, placeholder: 'presentation', input_html: { class: 'dasboard_input' }, maxlength: 50 %>
 
-      <%= f.input :photos, as: :file, label: false %>
+    <%= f.input :photos, as: :file, label: false, input_html: { class: 'divice_sign_in' } %>
 
-      <%= f.button :submit, class: "btn-primary" %>
-    <% end %>
-  </div>
+    <%= f.button :submit, class: 'device_identification update_store' %>
+  <% end %>
 </div>
+
