@@ -116,6 +116,38 @@
   margin-right: 8px;
 }
 
+.validation_order_dasboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #1EDD88;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: #1BCB7F;
+  color: white;
+}
+
+.red_btn{
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: red;
+  transition: background 0.3s ease;
+}
+
+.red_btn:hover {
+  background: red;
+  color: white;
+}
+
 #file-upload-button{
  background-color: red !important;
 }

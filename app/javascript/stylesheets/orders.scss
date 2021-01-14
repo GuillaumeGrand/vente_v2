@@ -18,16 +18,22 @@
   margin: 16px;
 }
 
-.order_unit{
-  border: solid;
-  border-color: red;
-  border-width: 1px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
+// .order_unit{
+//   border: solid;
+//   border-color: red;
+//   border-width: 1px;
+//   border-radius: 8px;
+//   margin-bottom: 16px;
+// }
 
-.order_name{
+// .order_name{
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+// }
+
+.order_info{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }

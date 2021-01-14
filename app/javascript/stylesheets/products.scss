@@ -37,9 +37,10 @@
   min-width: 2em;
 }
 
-.photo_product > img{
+.photo_product{
   object-fit: cover;
 }
+
 
 #show_photo {
   display: flex;
@@ -58,6 +59,7 @@
 }
 
 #zoom_photo  > img{
-   width: 100%;
+  width: 100%;
   height: auto;
+  object-fit: cover;
 }

@@ -1,6 +1,7 @@
+<div class="container">
 <% @store.products.each do |product| %>
       <div class="card-product">
-    <%= link_to controller: "products", action: "edit", id: product, :remote => true  do %>
+    <%= link_to controller: "products", :class => "photo_product", action: "edit", id: product, :remote => true  do %>
           <div>
             <%= cl_image_tag(product.photos[0].key, :width => 250, :height => 200) if product.photos.present? %>
           </div>
@@ -20,3 +21,4 @@
           </div>
       </div>
   <% end %>
+</div>
