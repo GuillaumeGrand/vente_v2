@@ -1,0 +1,2 @@
+class TraderMailer < ApplicationMailer
+end
