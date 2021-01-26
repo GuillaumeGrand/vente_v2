@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Stripe
   class AccountLinksUser
     def initialize(account, base_url)
@@ -7,11 +9,11 @@ module Stripe
 
     def call
       account_links = Stripe::AccountLink.create({
-        account: @account["id"],
-        refresh_url: @base_url,
-        return_url: @base_url,
-        type: 'account_onboarding',
-      })
+                                                   account: @account['id'],
+                                                   refresh_url: @base_url,
+                                                   return_url: @base_url,
+                                                   type: 'account_onboarding'
+                                                 })
     end
   end
 end

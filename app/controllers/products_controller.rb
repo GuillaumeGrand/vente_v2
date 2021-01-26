@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
-  def index
-  end
+  def index; end
 
   def show
     @product = Product.find(params[:id])
@@ -14,7 +15,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if product_params["photos"].nil? == false
+    if product_params['photos'].nil? == false
       @product.photos.each do |photo|
         Cloudinary::Uploader.destroy(photo.key)
       end

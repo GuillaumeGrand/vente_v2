@@ -1,5 +1,5 @@
-class PaymentsController
-  def create_acount
+# frozen_string_literal: true
 
-  end
+class PaymentsController
+  def create_acount; end
 end

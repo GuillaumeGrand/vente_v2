@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SumOrders
   def initialize(orders)
     @orders = orders
@@ -9,7 +11,7 @@ class SumOrders
     @orders.each do |order|
       amount = 0
       order[1].each do |products|
-      amount += products.quantity * (products.product.price_cents / 100)
+        amount += products.quantity * (products.product.price_cents / 100)
       end
       @amount.push(amount)
     end

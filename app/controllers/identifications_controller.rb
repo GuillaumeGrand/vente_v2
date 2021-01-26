@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IdentificationsController < ApplicationController
   protect_from_forgery except: :trader_update
 
@@ -6,7 +8,7 @@ class IdentificationsController < ApplicationController
   end
 
   def user_info
-    user = User.find(current_user.id)
+    # user = User.find(current_user.id)
     base_url = Rails.application.config_for(:domain)[:base_url]
 
     acount = Stripe::CreateUser.new.call
@@ -22,9 +24,9 @@ class IdentificationsController < ApplicationController
   def trader_info_create
     base_url = Rails.application.config_for(:domain)[:base_url]
     trader = Trader.find(current_trader.id)
-    account = Stripe::CreateTrader.new( params['token-account']).call
+    account = Stripe::CreateTrader.new(params['token-account']).call
     Stripe::AccountLinks.new(account, trader.id, base_url).call
-    trader.update(stripe_account: account["id"])
+    trader.update(stripe_account: account['id'])
     # person = Stripe::CreatePerson.new(account["id"], params['token-person']).call
     # trader.update(person_id: person["id"])
 
@@ -37,8 +39,8 @@ class IdentificationsController < ApplicationController
 
   def trader_update
     trader = Trader.find(current_trader.id)
-    toto = Stripe::CreateFile.new(params['front'], trader.stripe_account)
-    Stripe::UpdateTrader.new(trader.stripe_account,  params['token-account']).call
+    Stripe::CreateFile.new(params['front'], trader.stripe_account)
+    Stripe::UpdateTrader.new(trader.stripe_account, params['token-account']).call
     redirect_to root_path
   end
 
@@ -50,16 +52,18 @@ class IdentificationsController < ApplicationController
     person = Stripe::Account.create_person(
       account, # id of the account created earlier
       {
-      person_token: token,
+        person_token: token
       }
     )
   end
 
   def user_params
-    params.require(:user).permit(:email, :country, :legal_name, :adress_1, :adress_2, :city, :area, :zip_code, :phone_number)
+    params.require(:user).permit(:email, :country, :legal_name, :adress_1, :adress_2, :city, :area, :zip_code,
+                                 :phone_number)
   end
 
   def trader_params
-    params.require(:trader).permit(:product_description, :first_name, :last_name, :day, :month, :year, :line1, :line2, :postal_code, :city, :country, :external_account)
+    params.require(:trader).permit(:product_description, :first_name, :last_name, :day, :month, :year, :line1, :line2,
+                                   :postal_code, :city, :country, :external_account)
   end
 end

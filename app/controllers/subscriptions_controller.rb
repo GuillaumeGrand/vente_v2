@@ -1,16 +1,20 @@
+# frozen_string_literal: true
+
 class SubscriptionsController < ApplicationController
-  before_action :authenticate_trader!, :only => [:index, :success, :checkout_sub, :checkout_session, :customer_portal]
-  skip_before_action :verify_authenticity_token, :only => [:checkout_sub, :webhook]
+  before_action :authenticate_trader!, only: %i[index success checkout_sub checkout_session customer_portal]
+  skip_before_action :verify_authenticity_token, only: %i[checkout_sub webhook]
   protect_from_forgery except: :webhook
 
   def index
     @plans = Stripe::Plan.list.data
     Stripe::CreateCustomer.new(current_trader.id).call
-    @@trader = Trader.find(current_trader.id)
   end
 
   def success
-
+    trader = Trader.find(current_trader.id)
+    session_id = params[:session_id]
+    session = Stripe::Checkout::Session.retrieve(session_id)
+    trader.update(stripe_subscription_id: session['subscription'])
   end
 
   def checkout_sub
@@ -24,20 +28,20 @@ class SubscriptionsController < ApplicationController
     # is redirected to the success page.
     begin
       session = Stripe::Checkout::Session.create(
-        success_url: base_url + '/success?session_id={CHECKOUT_SESSION_ID}',
+        success_url: "#{base_url}/success?session_id={CHECKOUT_SESSION_ID}",
         cancel_url: base_url,
         payment_method_types: ['card'],
         mode: 'subscription',
         line_items: [{
           quantity: 1,
-          price: data['priceId'],
-        }],
+          price: data['priceId']
+        }]
       )
       render json: session
-    rescue => e
+    rescue StandardError => e
       halt 400,
-          { 'Content-Type' => 'application/json' },
-          { 'error': { message: e.error.message } }.to_json
+           { 'Content-Type' => 'application/json' },
+           { 'error': { message: e.error.message } }.to_json
     end
 
     {
@@ -66,10 +70,9 @@ class SubscriptionsController < ApplicationController
     return_url = ENV['DOMAIN']
 
     session = Stripe::BillingPortal::Session.create({
-      customer: checkout_session['customer'],
-      return_url: return_url
-    })
-
+                                                      customer: checkout_session['customer'],
+                                                      return_url: return_url
+                                                    })
     {
       url: session.url
     }.to_json
@@ -77,61 +80,58 @@ class SubscriptionsController < ApplicationController
 
   def webhook
     webhook_secret = ENV['STRIPE_WEBHOOK_SECRET']
-  payload = request.body.read
-  if !webhook_secret.empty?
-    # Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
-    sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    event = nil
+    payload = request.body.read
+    if !webhook_secret.empty?
+      # Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
+      sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+      event = nil
 
-    begin
-      event = Stripe::Webhook.construct_event(
-        payload, sig_header, webhook_secret
-      )
-    rescue JSON::ParserError => e
-      # Invalid payload
-      status 400
-      return
-    rescue Stripe::SignatureVerificationError => e
-      # Invalid signature
-      puts '⚠️  Webhook signature verification failed.'
-      status 400
-      return
+      begin
+        event = Stripe::Webhook.construct_event(
+          payload, sig_header, webhook_secret
+        )
+      rescue JSON::ParserError => e
+        # Invalid payload
+        status 400
+        return
+      rescue Stripe::SignatureVerificationError => e
+        # Invalid signature
+        puts '⚠️  Webhook signature verification failed.'
+        status 400
+        return
+      end
+    else
+      data = JSON.parse(payload, symbolize_names: true)
+      event = Stripe::Event.construct_from(data)
     end
-  else
-    data = JSON.parse(payload, symbolize_names: true)
-    event = Stripe::Event.construct_from(data)
-  end
-  # Get the type of webhook event sent
-  event_type = event['type']
-  data = event['data']
-  data_object = data['object']
+    # Get the type of webhook event sent
+    event_type = event['type']
+    data = event['data']
+    data_object = data['object']
 
-  case event.type
-  when 'checkout.session.completed'
-    subscription = event["data"]["object"]["subscription"]
-    @@trader.update(stripe_subscription_id: subscription)
+    case event.type
+    when 'checkout.session.completed'
+    when 'customer.subscription.completed'
 
-  when 'invoice.paid'
-    # Continue to provision the subscription as payments continue to be made.
-    # Store the status in your database and check when a user accesses your service.
-    # This approach helps you avoid hitting rate limits.
-  when 'invoice.payment_failed'
-    # The payment failed or the customer does not have a valid payment method.
-    # The subscription becomes past_due. Notify your customer and send them to the
-    # customer portal to update their payment information.
-  when 'customer.created'
-  else
-    puts "Unhandled event type: #{event.type}"
-  end
+    when 'invoice.paid'
 
-  # status 200
-  head :ok
+    when 'invoice.payment_failed'
+      # The payment failed or the customer does not have a valid payment method.
+      # The subscription becomes past_due. Notify your customer and send them to the
+      # customer portal to update their payment information.
+    when 'customer.created'
+    else
+      puts "Unhandled event type: #{event.type}"
+    end
+
+    # status 200
+    head :ok
   end
 
   def delete_sub
-    Stripe::Subscription.update(@@trader.stripe_subscription_id, {cancel_at_period_end: true})
-    @@trader.update(stripe_subscription_id: nil)
+    trader = Trader.find(current_trader.id)
+    Stripe::Subscription.update(trader.stripe_subscription_id, { cancel_at_period_end: true })
+    trader.update(stripe_subscription_id: nil)
     redirect_to root_path
   end
-
 end

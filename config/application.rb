@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -18,4 +20,3 @@ module VenteV2
     # test
   end
 end
-

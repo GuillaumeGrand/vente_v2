@@ -17,34 +17,40 @@ body {
   position: sticky;
   position: -webkit-sticky;
   top: 0; /* required */
+  flex-wrap: nowrap
 }
 
 .nav_left{
   flex-grow: 1;
+  text-align: center;
 }
 
 .nav_fill{
-  width: 60%;
+  flex-shrink:0;
   padding-right: 0px;
-  flex-grow: 2;
+  flex-grow: 6;
 }
 
 .nav_right{
  display: flex;
  justify-content: space-evently;
  flex-direction: row;
- flex-grow: 1;
+ margin-right: 16px;
 }
 
-.navbar div {
-  display: inline-block;
-}
+// .navbar div {
+//   display: inline-block;
+// }
 
 .logo{
   color: rgb(226, 226, 226);
   text-transform: uppercase;
   letter-spacing: 5px;
   font-size: 20px;
+}
+
+.cart a{
+  margin-top: 4px;
 }
 
 .nav-links a{
@@ -101,11 +107,10 @@ body {
 }
 
 
-@media only screen and (max-width: 1300px) {
-  .nav_fill{
-    width: 40%;
-    padding-right: 0px;
-    flex-grow: 2;
-  }
-}
-
+// @media only screen and (max-width: 1300px) {
+//   .nav_fill{
+//     width: 40%;
+//     padding-right: 0px;
+//     flex-grow: 2;
+//   }
+// }

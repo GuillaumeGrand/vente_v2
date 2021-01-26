@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'stripes/new'
   # post 'create_cart', to: 'carts#create', as: "create_cart"
   # get 'show/cart', to: 'carts#show', as: "show"
   get 'indentification/identification'
-  devise_for :traders, :controllers => {:registrations => "registrations"}
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :traders, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations' }
 
-  root to: "stores#index"
+  root to: 'stores#index'
 
   get '/orders', to: 'orders#orders', as: :orders
   get '/history', to: 'orders#history', as: :history
@@ -17,12 +19,12 @@ Rails.application.routes.draw do
   get '/trader_show/:store_id', to: 'stores#trader_show', as: :trader_show
 
   resources :stores do
-    resources :products, only: [ :index, :new, :create ]
+    resources :products, only: %i[index new create]
   end
-  resources :products, only: [ :show, :edit, :update, :destroy]
+  resources :products, only: %i[show edit update destroy]
 
-  resources :carts, only: [:index, :create, :destroy]
-  patch '/update_cart' => 'carts#update', as: "update_cart"
+  resources :carts, only: %i[index create destroy]
+  patch '/update_cart' => 'carts#update', as: 'update_cart'
 
   scope '/checkouts' do
     get 'create/:store_id', to: 'checkouts#create_checkout'
@@ -49,5 +51,4 @@ Rails.application.routes.draw do
   get '/delete_sub' => 'subscriptions#delete_sub', as: :delete_sub
   get '/success' => 'subscriptions#success', as: :success
   get '/checkout_session' => 'subscriptions#checkout_session', as: :checkout_session
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Total
   def initialize(cart)
     @cart = cart
@@ -6,7 +8,7 @@ class Total
   def call
     amount = 0
     @cart.each do |product|
-      amount += (product.quantity * product.product.price_cents )
+      amount += (product.quantity * product.product.price_cents)
     end
     amount
   end

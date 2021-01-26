@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Stripe
   class UpdatePerson
-
     def initialize(account_id, person_id, person_token)
       @account_id = account_id
       @person_token = person_token
@@ -13,7 +14,7 @@ module Stripe
         @account_id, # id of the account created earlier
         @person_id,
         {
-          person_token: @person_token,
+          person_token: @person_token
         }
       )
     end

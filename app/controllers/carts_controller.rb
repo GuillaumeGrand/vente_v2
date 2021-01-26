@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CartsController < ApplicationController
   before_action :authenticate_user!
 
@@ -11,17 +13,16 @@ class CartsController < ApplicationController
   end
 
   def update
-
-    if params["quantity"].empty? == false
-      cart_id = params["cart_id"]
-      product_quantity = params["quantity"]
+    if params['quantity'].empty? == false
+      cart_id = params['cart_id']
+      product_quantity = params['quantity']
       cart = Cart.find(cart_id)
       cart.quantity = product_quantity
       cart.save
     end
 
     respond_to do |format|
-      format.js {render inline: "location.reload();" }
+      format.js { render inline: 'location.reload();' }
     end
   end
 
@@ -33,13 +34,13 @@ class CartsController < ApplicationController
   end
 
   def index
-    cart_product = Cart.where(:user_id => current_user.id).order! 'created_at DESC'
+    cart_product = Cart.where(user_id: current_user.id).order! 'created_at DESC'
     @cart_product = cart_product.group_by(&:store_id)
   end
 
   private
 
   def cart_params
-    params.require(:cart).permit(:product_id, :store_id,:quantity, :ip )
+    params.require(:cart).permit(:product_id, :store_id, :quantity, :ip)
   end
 end

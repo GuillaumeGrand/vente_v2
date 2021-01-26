@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Store < ApplicationRecord
   has_one_attached :photos
   # validates :photos, presence: true
