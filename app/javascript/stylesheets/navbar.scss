@@ -33,20 +33,28 @@ body {
 
 .nav_right{
  display: flex;
- justify-content: space-evently;
+ // justify-content: space-evently;
  flex-direction: row;
  margin-right: 16px;
 }
 
-// .navbar div {
-//   display: inline-block;
-// }
+.navbar div {
+  display: inline-block;
+}
 
-.logo{
+.nav_logo{
   color: rgb(226, 226, 226);
   text-transform: uppercase;
   letter-spacing: 5px;
   font-size: 20px;
+}
+
+// .logo:hover{
+//   text-decoration: none;
+// }
+
+.nav-links {
+  margin-right: 16px;
 }
 
 .cart a{

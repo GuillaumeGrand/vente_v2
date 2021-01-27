@@ -1,85 +1,87 @@
-<form class="my-form" action="/trader_info_create" method="post">
-  <input type="hidden" name="token-account" id="token-account">
-  <input type="hidden" name="token-person" id="token-person">
-  <input type="hidden" value="<%= form_authenticity_token() %>"name="authenticity_token"/>
+<div class="container">
+  <form class="my-form" action="/trader_info_create" method="post">
+    <input type="hidden" name="token-account" id="token-account">
+    <input type="hidden" name="token-person" id="token-person">
+    <input type="hidden" value="<%= form_authenticity_token() %>"name="authenticity_token"/>
 
-  <label>
-    <span>Business Name</span>
-    <input class="inp-company-name">
-  </label>
-  <label>
-    <span>External account</span>
-    <input class="inp-company-account">
-  </label>
-
-  <fieldset>
-    <legend>Business info</legend>
     <label>
-      <span>Street Address Line 1</span>
-      <input class="inp-company-street-address1">
+      <span>Business Name</span>
+      <input class="inp-company-name device_identification">
     </label>
     <label>
-      <span>City</span>
-      <input class="inp-company-city">
-    </label>
-    <label>
-      <span>Postal Code</span>
-      <input class="inp-company-zip">
-    </label>
-  </fieldset>
-
-  <fieldset>
-    <legend>Owners</legend>
-    <label>
-      <span>first name</span>
-      <input class="inp-owners-first_name">
-    </label>
-    <label>
-      <span>last name</span>
-      <input class="inp-owners-last_name">
-    </label>
-    <label>
-      <span>day</span>
-      <input class="inp-owners-day">
-    </label>
-    <label>
-      <span>month</span>
-      <input class="inp-owners-month">
-    </label>
-    <label>
-      <span>year</span>
-      <input class="inp-owners-year">
+      <span>External account</span>
+      <input class="inp-company-account device_identification">
     </label>
 
-    <legend>Owners adress</legend>
-    <label>
-      <span>Street Address Line 1</span>
-      <input class="inp-owners-street-address1">
-    </label>
-    <label>
-      <span>City</span>
-      <input class="inp-owners-city">
-    </label>
-    <label>
-      <span>Postal Code</span>
-      <input class="inp-owners-zip">
-    </label>
-  </fieldset>
+    <fieldset>
+      <legend>Business info</legend>
+      <label>
+        <span>Street Address Line 1</span>
+        <input class="inp-company-street-address1 device_identification">
+      </label>
+      <label>
+        <span>City</span>
+        <input class="inp-company-city device_identification">
+      </label>
+      <label>
+        <span>Postal Code</span>
+        <input class="inp-company-zip device_identification">
+      </label>
+    </fieldset>
 
-  <fieldset>
-    <legend>Document</legend>
-    <label>
-      <span>front</span>
-      <input type="file" class="inp-person-front" name="front" accept=".png, .jpeg">
-    </label>
-    <label>
-      <span>back</span>
-      <input type="file" class="inp-person-back" name="back" accept=".png, .jpeg">
-    </label>
-  </fieldset>
-<!-- <p>En cliquant sur ce bouton, vous acceptez
-  <a href="#">nos Conditions Générales d'Utilisation</a> ainsi que les
-  <a href="/connect-account/legal">Conditions d'Utilisation des Comptes Connectés Stripe</a>
-</p> -->
-  <button>Submit</button>
-</form>
+    <fieldset>
+      <legend>Owners</legend>
+      <label>
+        <span>first name</span>
+        <input class="inp-owners-first_name">
+      </label>
+      <label>
+        <span>last name</span>
+        <input class="inp-owners-last_name">
+      </label>
+      <label>
+        <span>day</span>
+        <input class="inp-owners-day">
+      </label>
+      <label>
+        <span>month</span>
+        <input class="inp-owners-month">
+      </label>
+      <label>
+        <span>year</span>
+        <input class="inp-owners-year">
+      </label>
+
+      <legend>Owners adress</legend>
+      <label>
+        <span>Street Address Line 1</span>
+        <input class="inp-owners-street-address1">
+      </label>
+      <label>
+        <span>City</span>
+        <input class="inp-owners-city">
+      </label>
+      <label>
+        <span>Postal Code</span>
+        <input class="inp-owners-zip">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Document</legend>
+      <label>
+        <span>front</span>
+        <input type="file" class="inp-person-front" name="front" accept=".png, .jpeg">
+      </label>
+      <label>
+        <span>back</span>
+        <input type="file" class="inp-person-back" name="back" accept=".png, .jpeg">
+      </label>
+    </fieldset>
+  <!-- <p>En cliquant sur ce bouton, vous acceptez
+    <a href="#">nos Conditions Générales d'Utilisation</a> ainsi que les
+    <a href="/connect-account/legal">Conditions d'Utilisation des Comptes Connectés Stripe</a>
+  </p> -->
+    <button>Submit</button>
+  </form>
+</div>
