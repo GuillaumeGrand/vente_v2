@@ -1,0 +1,39 @@
+.stripe_identification{
+  height: 48px;
+  width: 17em;
+  margin: 2px;
+}
+
+.stripe_identification:focus {
+    border-style: solid;
+    border-color: #552C00 !important;
+    border-width: 1px;
+    border-radius: 4px;
+    -webkit-transition: border-color 0.5s;
+}
+
+.owners_data{
+  display: flex;
+  flex-direction: column;
+}
+
+#compagny_info fieldset{
+  margin-top: 16px;
+}
+
+#compagny_info form{
+  margin-left: 16px;
+}
+
+#owners_action{
+  background-color: #2ed06e;
+  border-color: #2ed06e;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+#owners_action:hover{
+  background-color: #34B861;
+  border-color: #34B861;
+}

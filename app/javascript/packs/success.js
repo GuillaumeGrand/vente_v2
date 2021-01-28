@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
   const urlParams = new URLSearchParams(window.location.search);
     const sessionId = urlParams.get("session_id")
-    let customerId;
+    // let customerId;
 
     if (sessionId) {
       fetch("/checkout_session?sessionId=" + sessionId)
@@ -21,8 +21,7 @@ document.addEventListener("turbolinks:load", function() {
           var sessionJSON = JSON.stringify(session, null, 2);
           document.querySelector("pre").textContent = sessionJSON;
         })
-        .catch(function(err){
-          console.log('Error when fetching Checkout session', err);
+        .catch(function(){
         });
 
       // In production, this should check CSRF, and not pass the session ID.
