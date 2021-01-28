@@ -116,10 +116,8 @@ body {
 }
 
 
-// @media only screen and (max-width: 1300px) {
-//   .nav_fill{
-//     width: 40%;
-//     padding-right: 0px;
-//     flex-grow: 2;
-//   }
-// }
+@media only screen and (max-width: 900px) {
+  .nav-links {
+    margin-right: 0px;
+  }
+}
