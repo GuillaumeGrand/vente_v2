@@ -17,6 +17,15 @@
   flex-direction: column;
 }
 
+.compagny_trader_info{
+  display: inline-block;
+}
+
+#compagny_info{
+  display: flex;
+  justify-content: center;
+}
+
 #compagny_info fieldset{
   margin-top: 16px;
 }
@@ -31,6 +40,7 @@
   font-weight: bold;
   color: #fff;
   letter-spacing: 1px;
+  margin-top: 32px !important;
 }
 
 #owners_action:hover{

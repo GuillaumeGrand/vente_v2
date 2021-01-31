@@ -1,83 +1,85 @@
 <div class="container" id="compagny_info">
-  <form class="my-form" action="/trader_info_create" method="post">
-    <input type="hidden" name="token-account" id="token-account">
-    <input type="hidden" name="token-person" id="token-person">
-    <input type="hidden" value="<%= form_authenticity_token() %>"name="authenticity_token"/>
+  <div class="compagny_trader_info">
+    <form class="my-form" action="/trader_info_create" method="post">
+      <input type="hidden" name="token-account" id="token-account">
+      <input type="hidden" name="token-person" id="token-person">
+      <input type="hidden" value="<%= form_authenticity_token() %>"name="authenticity_token"/>
 
-    <fieldset>
-      <legend>company</legend>
-        <label>
-          <input class="inp-company-name stripe_identification"  placeholder="Business Name">
-        </label>
-        <label>
-          <input class="inp-company-account stripe_identification"  placeholder="External account">
-        </label>
-    </fieldset>
+      <fieldset>
+        <legend>company</legend>
+          <label>
+            <input class="inp-company-name stripe_identification"  placeholder="Business Name">
+          </label>
+          <label>
+            <input class="inp-company-account stripe_identification"  placeholder="External account">
+          </label>
+      </fieldset>
 
-    <fieldset>
-        <legend>company address</legend>
-          <label>
-            <input class="inp-company-street-address1 stripe_identification" placeholder="Street Address Line 1">
-          </label>
-          <label>
-            <input class="inp-company-city stripe_identification" placeholder="City">
-          </label>
-          <label>
-            <input class="inp-company-zip stripe_identification" placeholder="Postal Code">
-          </label>
-    </fieldset>
+      <fieldset>
+          <legend>company address</legend>
+            <label>
+              <input class="inp-company-street-address1 stripe_identification" placeholder="Street Address Line 1">
+            </label>
+            <label>
+              <input class="inp-company-city stripe_identification" placeholder="City">
+            </label>
+            <label>
+              <input class="inp-company-zip stripe_identification" placeholder="Postal Code">
+            </label>
+      </fieldset>
 
-    <fieldset class="owners_data">
-      <legend>Owners</legend>
-        <div class="owners_name">
-          <label>
-            <input class="inp-owners-first_name stripe_identification" placeholder="first name">
-          </label>
-          <label>
-            <input class="inp-owners-last_name stripe_identification" placeholder="last name">
-          </label>
-        </div>
-        <div class="owners_date">
-          <label>
-            <input class="inp-owners-day stripe_identification" placeholder="day">
-          </label>
-          <label>
-            <input class="inp-owners-month stripe_identification" placeholder="month">
-          </label>
-          <label>
-            <input class="inp-owners-year stripe_identification" placeholder="year">
-          </label>
-        </div>
-    </fieldset>
+      <fieldset class="owners_data">
+        <legend>Owners</legend>
+          <div class="owners_name">
+            <label>
+              <input class="inp-owners-first_name stripe_identification" placeholder="first name">
+            </label>
+            <label>
+              <input class="inp-owners-last_name stripe_identification" placeholder="last name">
+            </label>
+          </div>
+          <div class="owners_date">
+            <label>
+              <input class="inp-owners-day stripe_identification" placeholder="day">
+            </label>
+            <label>
+              <input class="inp-owners-month stripe_identification" placeholder="month">
+            </label>
+            <label>
+              <input class="inp-owners-year stripe_identification" placeholder="year">
+            </label>
+          </div>
+      </fieldset>
 
-    <fieldset>
-      <legend>Owners adress</legend>
-        <label>
-          <input class="inp-owners-street-address1 stripe_identification" placeholder="Street Address Line 1">
-        </label>
-        <label>
-          <input class="inp-owners-city stripe_identification" placeholder="City">
-        </label>
-        <label>
-          <input class="inp-owners-zip stripe_identification" placeholder="Postal Code">
-        </label>
-    </fieldset>
+      <fieldset>
+        <legend>Owners adress</legend>
+          <label>
+            <input class="inp-owners-street-address1 stripe_identification" placeholder="Street Address Line 1">
+          </label>
+          <label>
+            <input class="inp-owners-city stripe_identification" placeholder="City">
+          </label>
+          <label>
+            <input class="inp-owners-zip stripe_identification" placeholder="Postal Code">
+          </label>
+      </fieldset>
 
-    <fieldset>
-      <legend>Document</legend>
-        <label>
-          <span>front</span>
-          <input type="file" class="inp-person-front" name="front" accept=".png, .jpeg">
-        </label>
-        <label>
-          <span>back</span>
-          <input type="file" class="inp-person-back" name="back" accept=".png, .jpeg">
-        </label>
-    </fieldset>
-  <!-- <p>En cliquant sur ce bouton, vous acceptez
-    <a href="#">nos Conditions Générales d'Utilisation</a> ainsi que les
-    <a href="/connect-account/legal">Conditions d'Utilisation des Comptes Connectés Stripe</a>
-  </p> -->
-    <button class="device_identification" id="owners_action">Submit</button>
-  </form>
+      <fieldset>
+        <legend>Document</legend>
+          <label>
+            <span>front</span>
+            <input type="file" class="inp-person-front" name="front" accept=".png, .jpeg">
+          </label>
+          <label>
+            <span>back</span>
+            <input type="file" class="inp-person-back" name="back" accept=".png, .jpeg">
+          </label>
+      </fieldset>
+    <!-- <p>En cliquant sur ce bouton, vous acceptez
+      <a href="#">nos Conditions Générales d'Utilisation</a> ainsi que les
+      <a href="/connect-account/legal">Conditions d'Utilisation des Comptes Connectés Stripe</a>
+    </p> -->
+      <button class="device_identification" id="owners_action" style="display: block; margin: 0 auto;">Submit</button>
+    </form>
+  </div>
 </div>
