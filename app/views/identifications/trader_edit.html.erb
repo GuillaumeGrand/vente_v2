@@ -1,119 +1,28 @@
-<!-- <form class="my-form"  enctype="multipart/form-data" action="/trader_update" method="post">
-  <input type="hidden" name="token-account" id="token-account">
-
-  <input type="hidden" value="<%= form_authenticity_token() %>"name="authenticity_token"/>
-
-  <label>
-    <span>Business Name</span>
-    <input class="inp-company-name">
-  </label>
-  <label>
-    <span>External account</span>
-    <input class="inp-company-account">
-  </label>
-
-  <fieldset>
-    <legend>Business info</legend>
-    <label>
-      <span>Street Address Line 1</span>
-      <input class="inp-company-street-address1">
-    </label>
-    <label>
-      <span>City</span>
-      <input class="inp-company-city">
-    </label>
-    <label>
-      <span>Postal Code</span>
-      <input class="inp-company-zip">
-    </label>
-  </fieldset>
-
-  <fieldset>
-    <legend>Owners</legend>
-    <label>
-      <span>first name</span>
-      <input class="inp-owners-first_name">
-    </label>
-    <label>
-      <span>last name</span>
-      <input class="inp-owners-last_name">
-    </label>
-    <label>
-      <span>day</span>
-      <input class="inp-owners-day">
-    </label>
-    <label>
-      <span>month</span>
-      <input class="inp-owners-month">
-    </label>
-    <label>
-      <span>year</span>
-      <input class="inp-owners-year">
-    </label>
-
-    <legend>Owners adress</legend>
-    <label>
-      <span>Street Address Line 1</span>
-      <input class="inp-owners-street-address1">
-    </label>
-    <label>
-      <span>City</span>
-      <input class="inp-owners-city">
-    </label>
-    <label>
-      <span>Postal Code</span>
-      <input class="inp-owners-zip">
-    </label>
-  </fieldset>
-
-  <fieldset>
-    <legend>Document</legend>
-    <label>
-      <span>front</span>
-      <input type="file" class="inp-person-front" name="front" accept=".png, .jpeg">
-    </label>
-    <label>
-      <span>back</span>
-      <input type="file" class="inp-person-back" name="back" accept=".png, .jpeg">
-    </label>
-  </fieldset>
-  <input type="submit">
-</form> -->
-
-<%= form_tag trader_update_path, authenticity_token: true, method: :post, class: "my-form" do %>
-  <%= hidden_field_tag "token-account" -%>
-  <%= label_tag "Business Name" %>
-  <%= text_field_tag 'Business Name',"", class: "inp-company-name" %>
-  <%= label_tag "External account" %>
-  <%= text_field_tag 'External account',"", class: "inp-company-account" %>
-  <h2>Business info</h2>
-  <%= label_tag "Street Address Line 1" %>
-  <%= text_field_tag 'Street Address Line 1',"", class: "inp-company-street-address1" %>
-  <%= label_tag "City" %>
-  <%= text_field_tag 'City',"", class: "inp-company-city" %>
-  <%= label_tag "code postal" %>
-  <%= text_field_tag 'code postal',"", class: "inp-company-zip" %>
-  <h2>Owners</h2>
-  <%= label_tag "first name" %>
-  <%= text_field_tag 'first name',"", class: "inp-owners-first_name" %>
-  <%= label_tag "last name" %>
-  <%= text_field_tag 'last name',"", class: "inp-owners-last_name" %>
-  <%= label_tag "day" %>
-  <%= text_field_tag 'day',"", class: "inp-owners-day" %>
-  <%= label_tag "month" %>
-  <%= text_field_tag 'month',"", class: "inp-owners-month" %>
-  <%= label_tag "year" %>
-  <%= text_field_tag 'year',"", class: "inp-owners-year" %>
-  <h2>Owners adress</h2>
-  <%= label_tag "Street Address Line 1" %>
-  <%= text_field_tag 'owner Street Address Line 1',"", class: "inp-owners-street-address1" %>
-  <%= label_tag "City" %>
-  <%= text_field_tag 'City owner',"", class: "inp-owners-city" %>
-  <%= label_tag "code postal" %>
-  <%= text_field_tag 'owner code postal',"", class: "inp-owners-zip" %>
-  <h2>Document</h2>
-  <%= file_field_tag  "front", class: "inp-person-front" %>
-  <%= file_field_tag  "back", class: "inp-person-back" %>
-  <%= button_tag 'submit'%>
-<% end %>
-
+<div class="container compagny_info" >
+  <div class="compagny_trader_info">
+  <%= form_tag trader_update_path, authenticity_token: true, method: :post, class: "my-form" do %>
+    <h2>company</h2>
+    <%= hidden_field_tag "token-account" -%>
+    <%= text_field_tag 'Business Name',"", class: "stripe_identification inp-company-name", placeholder: "Business Name"%>
+    <%= text_field_tag 'External account',"", class: "stripe_identification inp-company-account", placeholder: "External account" %>
+    <h2>company address</h2>
+    <%= text_field_tag 'Street Address Line 1',"", class: "stripe_identification inp-company-street-address1", placeholder: "Street Address Line 1" %>
+    <%= text_field_tag 'City',"", class: "stripe_identification inp-company-city", placeholder: "City" %>
+    <%= text_field_tag 'code postal',"", class: "stripe_identification inp-company-zip", placeholder: "code postal" %>
+    <h2>Owners</h2>
+    <%= text_field_tag 'first name',"", class: "stripe_identification inp-owners-first_name", placeholder: "first name" %>
+    <%= text_field_tag 'last name',"", class: "stripe_identification inp-owners-last_name", placeholder: "last name" %>
+    <%= text_field_tag 'day',"", class: "stripe_identification inp-owners-day", placeholder: "day" %>
+    <%= text_field_tag 'month',"", class: "stripe_identification inp-owners-month", placeholder: "month" %>
+    <%= text_field_tag 'year',"", class: "stripe_identification inp-owners-year", placeholder: "year" %>
+    <h2>Owners adress</h2>
+    <%= text_field_tag 'owner Street Address Line 1',"", class: "stripe_identification inp-owners-street-address1", placeholder: "Street Address Line 1" %>
+    <%= text_field_tag 'City owner',"", class: "stripe_identification inp-owners-city", placeholder: "City" %>
+    <%= text_field_tag 'owner code postal',"", class: "stripe_identification inp-owners-zip", placeholder: "code postal" %>
+    <h2>Document</h2>
+    <%= file_field_tag  "front", class: "inp-person-front" %>
+    <%= file_field_tag  "back", class: "inp-person-back" %>
+    <%= button_tag 'submit', id: "owners_action_edit", style: "display: block; margin: 0 auto;" %>
+  <% end %>
+  </div>
+</div>

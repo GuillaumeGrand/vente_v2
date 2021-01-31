@@ -1,0 +1,28 @@
+#compagny_info_edit{
+  display: flex;
+  justify-content: center;
+}
+
+#compagny_info_edit fieldset{
+  margin-top: 16px;
+}
+
+#compagny_info_edit form{
+  margin-left: 16px;
+}
+
+#owners_action_edit{
+  background-color: #2ed06e;
+  border-color: #2ed06e;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  height: 48px;
+  width: 34em;
+  margin-top: 32px !important;
+}
+
+#owners_action_edit:hover{
+  background-color: #34B861;
+  border-color: #34B861;
+}
