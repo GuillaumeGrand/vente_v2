@@ -1,13 +1,13 @@
 <div class="container">
   <% @store.products.each do |product| %>
       <div class="card-product">
-    <%= link_to controller: "products", :class => "photo_product", action: "show", id: product, store_id: @store do %>
-          <div>
-            <%= cl_image_tag(product.photos[0].key, :width => 250, :height => 200) if product.photos.present? %>
+    <%= link_to controller: "products", :class => "photo_product", action: "show", store_id: @store do %>
+          <div class="show_photo_store">
+              <%= cl_image_tag(product.photos[0].key, :width => 250, :height => 200) if product.photos.present? %>
           </div>
           <div class="card-product-infos">
             <h2><%= product.name %></h2>
-            <p><%= product.presentation %></p>
+            <p><%= simple_format(product.presentation) %></p>
           </div>
     <% end %>
           <div class="card-trip-pricing">

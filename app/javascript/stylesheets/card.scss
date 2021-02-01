@@ -64,20 +64,20 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 16px;
 }
 
 .card-product img {
-  height: 100%;
-  width: 200px;
+  height:200px;
+  width: 250px;
   object-fit: cover;
 }
 
 .card-product a {
   flex-grow:1;
   display: flex;
-  align-items: center;
+
 }
 .card-product h2 {
   font-size: 16px;
@@ -103,7 +103,8 @@
 
 .card-trip-pricing{
   width: 188px;
-  padding-right: 32px,
+  padding-right: 32px;
+    padding-top: 40px;
 }
 
 .card-trip-pricing h2{
