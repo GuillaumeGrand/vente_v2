@@ -77,6 +77,35 @@
   font-color:#552C00;
 }
 
+.password_data{
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.password_data > *{
+  margin-top: 32px;
+}
+
+.password_data a {
+  color: #552C00;
+  font-weight: 600;
+}
+
+.password_data h3 {
+  color: #552C00;
+  font-weight: 600;
+}
+
+.password_data h2 {
+  font-weight: 800;
+  font-size: 1.75rem;
+  line-height: 1.14285714;
+  color: #37517e;
+}
+
 #device_action{
   background-color: #2ed06e;
   border-color: #2ed06e;

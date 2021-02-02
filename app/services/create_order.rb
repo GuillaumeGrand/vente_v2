@@ -8,8 +8,7 @@ class CreateOrder
 
   def call
     @cart.each do |cart|
-      order = Order.create!(quantity: cart.quantity, user_id: @user_id, store_id: cart.store_id,
-                            product_id: cart.product.id)
+      Order.create!(quantity: cart.quantity, user_id: @user_id, store_id: cart.store_id, product_id: cart.product.id)
       cart.destroy
     end
   end
