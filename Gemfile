@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'kaminari'
 gem 'bonsai-searchkick'
 gem 'cloudinary', '~> 1.16.0'
 gem 'country_select', '~> 4.0'
