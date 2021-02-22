@@ -1,4 +1,4 @@
-<div class="page_product container">
+<div class="page_product">
   <div id= "show_photo">
     <div class = "product_photo">
        <% @product.photos.each do |photo| %>
@@ -12,11 +12,16 @@
 
   <div class="product_data">
     <%= @product.name %>
-    <%= simple_format(@product.presentation) %>
+    <div class="product_data_presentation">
+      <%= simple_format(@product.presentation) %>
+    </div>
+    <%= simple_format(@product.product_characteristic) %>
     <%= @product.price %>
   </div>
 
   <div class="product_data_recap">
+     <%= @product.price %><br>
+     <%= check_stock(@product) %><br>
     <%= simple_form_for @cart do |f| %>
           <%= f.error_notification %>
 
@@ -26,9 +31,10 @@
 
           <%= f.input :quantity, collection: [1, 2, 3, 4, 5], label: "qantiter :", selected: 1 %>
 
-          <%= f.button :submit,'panier', class: "btn-primary" %>
+          <%= f.button :submit,'panier', class: "btn-primary btn_prd_data" %>
 
           <%#= link_to 'Achat', stores_path, :class => 'button' %>
     <% end %>
+    <i class="fa fa-lock">Transaction securisée</i>
   </div>
 </div>
