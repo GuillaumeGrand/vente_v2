@@ -5,6 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'grape-active_model_serializers'
+gem 'rack-cors'
+gem 'grape'
 gem 'kaminari'
 gem 'bonsai-searchkick'
 gem 'cloudinary', '~> 1.16.0'

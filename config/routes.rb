@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount API::Base, at: "/"
   get 'stripes/new'
   # post 'create_cart', to: 'carts#create', as: "create_cart"
   # get 'show/cart', to: 'carts#show', as: "show"
