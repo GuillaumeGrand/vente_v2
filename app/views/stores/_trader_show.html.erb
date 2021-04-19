@@ -3,7 +3,7 @@
       <div class="card-product">
     <%= link_to controller: "products", :class => "photo_product", action: "edit", id: product, :remote => true  do %>
           <div>
-            <%= cl_image_tag(product.photos[0].key, :width => 250, :height => 200) if product.photos.present? %>
+            <%= cl_image_tag(product.first_product_photo, :width => 250, :height => 200) if product.product_photo_present? %>
           </div>
           <div class="card-product-infos">
             <h2><%= product.name %></h2>

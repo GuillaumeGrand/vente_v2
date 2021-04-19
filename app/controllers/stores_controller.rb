@@ -3,14 +3,15 @@
 class StoresController < ApplicationController
   def index
     @stores = if params['search'].present?
-                Store.search(params['search']['query'])
+                Store.includes([photos_attachment: :blob]).find(params['search']['query'])
               else
-                Store.search('*')
+                Store.all.includes([photos_attachment: :blob])
               end
   end
 
   def show
     @store = Store.find(params[:id])
+    @products = @store.products.includes([photos_attachments: :blob])
     @cart = Cart.new
   end
 

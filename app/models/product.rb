@@ -6,4 +6,8 @@ class Product < ApplicationRecord
   monetize :price_cents
 
   searchkick
+
+  def first_product_photo
+    photos[0].key
+  end
 end

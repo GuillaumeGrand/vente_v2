@@ -4,7 +4,7 @@
         <% @stores.each do |store|  %>
           <a href = "stores/<%= store.id %>">
             <div class="card-trip">
-              <%= cl_image_tag store.photos.key if store.photos.present? %>
+              <%= cl_image_tag store.store_photo if store.photo_present? %>
               <div class="card-store-infos">
                 <div>
                   <h2><%= store.name.html_safe %></h2>

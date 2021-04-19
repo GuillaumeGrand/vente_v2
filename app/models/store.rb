@@ -8,4 +8,8 @@ class Store < ApplicationRecord
   has_many :orders
 
   searchkick
+
+  def store_photo
+    photos.key
+  end
 end

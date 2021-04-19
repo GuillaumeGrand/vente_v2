@@ -2,12 +2,12 @@
   <div class="page_product">
     <div id= "show_photo">
       <div class = "product_photo">
-         <% @product.photos.each do |photo| %>
+         <% @photos.each do |photo| %>
                 <%= cl_image_tag(photo.key, :width => 40, :height => 40, :class => "photo_product", :id => photo.id) %>
         <% end %>
       </div>
       <div id = "zoom_photo">
-          <%= cl_image_tag(@product.photos.first.key) %>
+          <%= cl_image_tag(@product.first_product_photo) %>
       </div>
     </div>
 
