@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post '/order_update', to: 'orders#validation_order', as: :validation_order
 
   get '/trader_show/:store_id', to: 'stores#trader_show', as: :trader_show
+  get '/home', to: 'stores#home', as: :home
 
   resources :stores do
     resources :products, only: %i[index new create]

@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class StoresController < ApplicationController
+
+  def home
+
+  end
+  
   def index
     @stores = if params['search'].present?
                 Store.includes([photos_attachment: :blob]).find(params['search']['query'])

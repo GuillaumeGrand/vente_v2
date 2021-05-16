@@ -34,7 +34,7 @@ class CartsController < ApplicationController
   end
 
   def index
-    cart_product = Cart.where(user_id: current_user.id).order! 'created_at DESC'
+    cart_product = Cart.find_user_cart(current_user)
     @cart_product = cart_product.group_by(&:store_id)
   end
 

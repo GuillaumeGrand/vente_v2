@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     current_trader.store ? @store = Store.find(current_trader.store.id) : ''
 
     if !current_trader.store.nil?
-      @order = Order.where(store_id: current_trader.store.id, order_validation: false)
+      @order = Order.find_order_validation_false
       @orders = @order.group_by(&:user_id)
     else
       @orders = []
@@ -29,12 +29,12 @@ class OrdersController < ApplicationController
   end
 
   def user_show
-    orders = Order.where(user_id: current_user.id).order! 'created_at DESC'
+    orders = Order.find_current_user_orders
     @stores_orders = orders.group_by(&:store_id)
   end
 
   def history
-    @order = Order.where(store_id: current_trader.store.id, order_validation: true)
+    @order = Order.find_order_validation_true
     @orders = @order.group_by(&:user_id)
 
     respond_to do |format|
@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
   end
 
   def orders
-    @order = Order.where(store_id: current_trader.store.id, order_validation: false)
+    @order = Order.find_order_validation_false
     @orders = @order.group_by(&:user_id)
     @amount = SumOrders.new(@orders).call
 
