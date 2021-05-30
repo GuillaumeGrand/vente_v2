@@ -7,6 +7,6 @@ class FetchCart
   end
 
   def call
-    @cart_product = Cart.all.find_user_orders_in_store
+    @cart_product = Cart.all.find_user_orders_in_store(@user_id, @store_id)
   end
 end

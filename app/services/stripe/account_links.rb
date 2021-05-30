@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Stripe
   class AccountLinks
     def initialize(account, trader_id, base_url)

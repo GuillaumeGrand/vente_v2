@@ -5,6 +5,6 @@ class Cart < ApplicationRecord
   belongs_to :store
   belongs_to :product
 
-  scope :find_user_cart, lambda{ |user| where(user_id: user.id).order! 'created_at DESC' }
-  scope :find_user_orders_in_store, -> { where(user_id: @user_id, store_id: @store_id) }
+  scope :find_user_cart, lambda{ |user| where(user_id: user.id).includes(:store, [product: [photos_attachments: :blob]]).order! 'created_at DESC' }
+  scope :find_user_orders_in_store, lambda{ |user_id, store_id| where(user_id: user_id, store_id: store_id) }
 end

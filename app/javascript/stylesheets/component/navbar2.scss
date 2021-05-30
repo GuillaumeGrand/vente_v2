@@ -6,7 +6,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.navbar{
+.main_nav{
   z-index: 1;
   display: flex;
   flex-direction: row;
@@ -116,8 +116,29 @@ body {
 }
 
 
-@media only screen and (max-width: 1025px) {
+@media only screen and (max-width: 1250px) {
   .nav-links {
     margin-right: 0px;
+  }
+
+  .main_nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav_logo {
+    display: none;
+  }
+
+  .nav_fill{
+    width: 100%;
+    padding-left: 62px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .nav_right {
+    display: flex;
+    justify-content: space-between;
   }
 }

@@ -1,5 +1,4 @@
-<div class="navbar">
-
+<nav class="main_nav">
   <div class="nav_left">
     <a href="/">
       <div class="nav_logo" >
@@ -44,21 +43,4 @@
         </a>
     </div>
   </div>
-</div>
-
-
-<div class="navbar_2">
-   <%= link_to "vetement"%>
-   <%= link_to "informatique"%>
-   <%= link_to "librairie"%>
-   <%= link_to "Cuisine"%>
-   <%= link_to "boutique de noel"%>
-   <%= link_to "chèques-cadeaux"%>
-   <%= link_to "Service Client"%>
-
-   <% if user_signed_in? %>
-    <%= link_to('deconextion utilisateur', destroy_user_session_path, method: :delete) %>
-    <% elsif  trader_signed_in? %>
-      <%= link_to('deconextion commercant', destroy_trader_session_path, method: :delete) %>
-    <% end %>
-</div>
+</nav>
